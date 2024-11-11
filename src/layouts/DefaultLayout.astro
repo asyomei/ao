@@ -1,0 +1,45 @@
+---
+import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro"
+import Main from "../components/Main.astro"
+import BaseLayout, { type Props } from "./BaseLayout.astro"
+
+const { title, class: className } = Astro.props
+---
+
+<BaseLayout
+  {title}
+  class:list={["overflow-y-scroll bg-primary font-mono text-sm leading-4 text-primary", className]}
+>
+  <Header />
+  <Main>
+    <slot />
+  </Main>
+  <Footer />
+</BaseLayout>
+
+<style is:global>
+  :root {
+    --bg: #eff1f5;
+    --bg-accent: #e6e9ef;
+    --text-accent: #8839ef;
+    --text-accent-dim: #9062d6;
+    --text-primary: #4c4f69;
+    --text-secondary: #9ca0b0;
+  }
+
+  @media screen and (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1e1e2e;
+      --bg-accent: #181825;
+      --text-accent: #cba6f7;
+      --text-accent-dim: #a490c9;
+      --text-primary: #cdd6f4;
+      --text-secondary: #6c7086;
+    }
+  }
+
+  a {
+    @apply text-accent;
+  }
+</style>

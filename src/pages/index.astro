@@ -1,0 +1,56 @@
+---
+import Table from "../components/Table.astro"
+import DefaultLayout from "../layouts/DefaultLayout.astro"
+---
+
+<DefaultLayout>
+  <section>
+    <div>hi world!</div>
+  </section>
+
+  <section>
+    <div>i am yet another human person</div>
+    <div>
+      named as <span class="font-bold">vadim</span> aka
+      <a href="https://mynickname.com/vabgalimov" class="font-bold text-primary">vabgalimov</a> aka
+      <a href="https://mynickname.com/id1805155" class="font-bold text-primary">asyomei</a>
+    </div>
+    <div>speak on russian, write on ts</div>
+  </section>
+
+  <section>
+    <div>
+      my birthday on <span class="font-bold">feb 9</span>
+      <span class="text-secondary">(yeah, i am aquarius)</span>
+    </div>
+    <div>
+      my favorite color is <span class="font-bold">snow [#fffafa]</span>
+      <span class="mb-0.5 inline-block h-2.5 w-2.5 border border-secondary bg-[snow] align-middle">
+      </span>
+    </div>
+  </section>
+
+  <section>
+    <Table title="my contacts" comment="in order of preference">
+      telegram
+      <a href="https://t.me/asyomei">asyomei</a>
+      vk
+      <a href="https://vk.com/asyomei">asyomei</a>
+      4pda
+      <a href="https://4pda.to/forum/index.php?showuser=8079654">vabgalimov</a>
+      email
+      <div class="whitespace-nowrap">vadim @ asyomei.org</div>
+    </Table>
+  </section>
+
+  <section>
+    <Table title="other links">
+      shikimori
+      <a href="https://shikimori.one/asyomei">asyomei</a>
+      vndb
+      <a href="https://vndb.org/u266442">asyomei</a>
+      last.fm
+      <a href="https://www.last.fm/user/asyomei">asyomei</a>
+    </Table>
+  </section>
+</DefaultLayout>

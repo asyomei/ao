@@ -1,0 +1,18 @@
+---
+interface Props {
+  title: string
+  comment?: string
+}
+
+const { title, comment } = Astro.props
+---
+
+<div class="pb-1">
+  {title}
+  {"{"}
+  {comment && <span class="text-secondary">// {comment}</span>}
+</div>
+<div class="grid grid-cols-[12rem_auto] pl-4 *:w-min sm:grid-cols-[10rem_auto]">
+  <slot />
+</div>
+{"}"}
