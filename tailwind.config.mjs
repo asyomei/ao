@@ -17,7 +17,7 @@ export default {
         sm: { max: "720px" },
       },
       fontFamily: {
-        mono: ["Fira Mono", "monospace"],
+        mono: ["Fira Mono", "monospace", "DejaVu Sans"],
       },
     },
   },
