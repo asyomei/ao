@@ -3,13 +3,17 @@ import Footer from "../components/Footer.astro"
 import Header from "../components/Header.astro"
 import Main from "../components/Main.astro"
 import BaseLayout, { type Props } from "./BaseLayout.astro"
+import "@fontsource/fira-mono"
 
 const { title, class: className } = Astro.props
 ---
 
 <BaseLayout
   {title}
-  class:list={["overflow-y-scroll bg-primary font-mono text-sm leading-4 text-primary", className]}
+  class:list={[
+    "overflow-y-scroll bg-primary font-mono text-[14px] leading-[18px] text-primary sm:text-[12px]",
+    className,
+  ]}
 >
   <Header />
   <Main>

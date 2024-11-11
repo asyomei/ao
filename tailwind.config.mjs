@@ -16,6 +16,9 @@ export default {
       screens: {
         sm: { max: "720px" },
       },
+      fontFamily: {
+        mono: ["Fira Mono", "monospace"],
+      },
     },
   },
   plugins: [],
