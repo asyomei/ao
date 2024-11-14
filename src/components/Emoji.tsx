@@ -1,6 +1,6 @@
 import { createSignal, type JSXElement } from "solid-js"
 
-const EMOJIS = ["(◕‿◕✿)", "(✿◕‿◕)", "(◡‿◡✿)", "(✿◡‿◡)", "(✿◠‿◠)", "(◠‿◠✿)"]
+const EMOJIS = ["(◕‿◕✿)", "(✿◕‿◕)", "(◡‿◡✿)", "(✿◡‿◡)", "(✿◠‿◠)", "(◠‿◠✿)", "(✿↼‿◕)", "(◕‿↼✿)"]
 
 export default function Emoji() {
   let emojis = shuffled(EMOJIS)
