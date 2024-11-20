@@ -23,8 +23,6 @@
     "astro-icon": "^1.1.2",
     "astro-seo": "^0.8.4",
     "clsx": "^2.1.1",
-    "sass": "^1.81.0",
-    "sharp": "^0.33.5",
     "solid-js": "^1.9.3",
     "tailwindcss": "^3.4.15",
     "typescript": "^5.6.3"

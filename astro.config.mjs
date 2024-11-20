@@ -3,7 +3,7 @@ import node from "@astrojs/node"
 import solid from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 import icon from "astro-icon"
-import { defineConfig } from "astro/config"
+import { defineConfig, passthroughImageService } from "astro/config"
 
 import sitemap from "@astrojs/sitemap"
 
@@ -24,6 +24,7 @@ export default defineConfig({
     sitemap(),
   ],
   devToolbar: { enabled: false },
+  image: { service: passthroughImageService() },
   vite: {
     ssr: isProd ? { noExternal: true } : undefined,
     define: {
