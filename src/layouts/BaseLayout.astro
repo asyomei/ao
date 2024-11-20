@@ -1,21 +1,83 @@
 ---
+import { SEO } from "astro-seo"
+import { THEME_KEY, LIGHT_CSS, DARK_CSS } from "../utils/color-theme"
+
 export interface Props {
   title?: string
   class?: string
 }
 
-const { title = "asyomei", class: className } = Astro.props
+const { title = "Asyomei", class: className } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
   <head>
+    <SEO
+      {title}
+      description="Личная страница Asyomei в интернете"
+      extend={{
+        link: [
+          { rel: "icon", href: "/favicon.png" },
+          { rel: "sitemap", href: "/sitemap-index.xml" },
+        ],
+      }}
+    />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" href="/favicon.png" />
     <title>{title}</title>
+    <script is:inline define:vars={{ THEME_KEY, LIGHT_CSS, DARK_CSS }}>
+      var themeStyle = document.createElement("style")
+      themeStyle.id = "theme-style"
+      document.head.appendChild(themeStyle)
+      var theme = localStorage.getItem(THEME_KEY)
+      if (theme === "dark") themeStyle.innerText = DARK_CSS
+      else if (theme === "light") themeStyle.innerText = LIGHT_CSS
+    </script>
   </head>
-  <body class:list={["m-0 p-0", className]}>
+  <body class={className}>
     <slot />
   </body>
 </html>
+
+<style is:global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @layer base {
+    :root {
+      --light-bg: #eff1f5;
+      --light-bg-mantle: #e6e9ef;
+      --light-text-accent: #8839ef;
+      --light-text-primary: #4c4f69;
+      --light-text-secondary: #6c6f85;
+
+      --dark-bg: #1e1e2e;
+      --dark-bg-mantle: #181825;
+      --dark-text-accent: #cba6f7;
+      --dark-text-primary: #cdd6f4;
+      --dark-text-secondary: #a6adc8;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: var(--light-bg);
+        --bg-mantle: var(--light-bg-mantle);
+        --text-accent: var(--light-text-accent);
+        --text-primary: var(--light-text-primary);
+        --text-secondary: var(--light-text-secondary);
+      }
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: var(--dark-bg);
+        --bg-mantle: var(--dark-bg-mantle);
+        --text-accent: var(--dark-text-accent);
+        --text-primary: var(--dark-text-primary);
+        --text-secondary: var(--dark-text-secondary);
+      }
+    }
+  }
+</style>

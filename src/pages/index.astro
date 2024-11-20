@@ -1,56 +1,79 @@
 ---
-import Table from "../components/Table.astro"
+import { Image } from "astro:assets"
+import avatar from "../assets/avatar.jpg"
+import CopyableText from "../components/dynamic/CopyableText"
+import Emoji from "../components/dynamic/Emoji"
+import Link from "../components/Link"
 import DefaultLayout from "../layouts/DefaultLayout.astro"
 ---
 
 <DefaultLayout>
+  <header class="flex gap-12">
+    <Image src={avatar} alt="avatar" height={100} width={100} class="rounded-full" />
+    <span class="self-center">
+      <h3 class="text-2xl text-accent">
+        Вадим «<Link href="https://mynickname.com/id1805155">Asyomei</Link>»
+      </h3>
+      <span>Начинающий <Link href="https://github.com/asyomei">разработчик</Link></span>
+    </span>
+  </header>
+
   <section>
-    <div>hi world!</div>
+    <p class="flex gap-3">
+      <span>Привет, мир!</span>
+      <Emoji client:idle />
+    </p>
   </section>
 
   <section>
-    <div>i am yet another human person</div>
-    <div>
-      named as <span class="font-bold">vadim</span> aka
-      <a href="https://mynickname.com/vabgalimov" class="font-bold text-primary">vabgalimov</a> aka
-      <a href="https://mynickname.com/id1805155" class="font-bold text-primary">asyomei</a>
-    </div>
-    <div>speak on russian, write on ts</div>
+    <p>Я студент мужского пола, родился 9 февраля (поэтому я водолей)</p>
+    <p>Во мне нет ничего особенного, так что вы вряд ли знаете меня</p>
   </section>
 
   <section>
-    <div>
-      my birthday on <span class="font-bold">feb 9</span>
-      <span class="text-secondary">(yeah, i am aquarius)</span>
-    </div>
-    <div>
-      my favorite color is <span class="font-bold">snow [#fffafa]</span>
-      <span class="mb-0.5 inline-block h-2.5 w-2.5 border border-secondary bg-[snow] align-middle">
-      </span>
-    </div>
+    <p>На данный момент я обучаюсь в ВУЗе на направление «Программная инженерия»</p>
   </section>
 
   <section>
-    <Table title="my contacts" comment="in order of preference">
-      telegram
-      <a href="https://t.me/asyomei">asyomei</a>
-      vk
-      <a href="https://vk.com/asyomei">asyomei</a>
-      4pda
-      <a href="https://4pda.to/forum/index.php?showuser=8079654">vabgalimov</a>
-      email
-      <div class="whitespace-nowrap">vadim @ asyomei.org</div>
-    </Table>
+    <p>Я плох в следующих направлениях:</p>
+    <ul class="list-inside list-disc">
+      <li>Английский язык</li>
+      <li>
+        Программирование (преимущественно на TypeScript, можете чекнуть раздел
+        {" "}
+        «<Link href="/projects">Проекты</Link>»)
+      </li>
+    </ul>
   </section>
 
   <section>
-    <Table title="other links">
-      shikimori
-      <a href="https://shikimori.one/asyomei">asyomei</a>
-      vndb
-      <a href="https://vndb.org/u266442">asyomei</a>
-      last.fm
-      <a href="https://www.last.fm/user/asyomei">asyomei</a>
-    </Table>
+    <p>Список основных контактов:</p>
+    <ul class="list-inside list-[square]">
+      <li><Link href="https://t.me/Asyomei">Телеграм</Link></li>
+      <li><Link href="https://vk.com/asyomei">ВКонтакте</Link></li>
+    </ul>
+  </section>
+
+  <section>
+    <p>Прочие контакты:</p>
+    <ul class="list-inside list-[square]">
+      <li><Link href="https://4pda.to/forum/index.php?showuser=8079654">4PDA</Link></li>
+      <li>
+        Электронная почта —
+        <CopyableText client:idle copyText="vadim@asyomei.org">vadim @ asyomei.org</CopyableText>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <p>Вот ещё интересные ссылки:</p>
+    <ul class="list-inside list-[square]">
+      <li><Link href="https://last.fm/user/asyomei">Last.fm</Link> — список прослушанной музыки</li>
+      <li><Link href="https://shikimori.one/asyomei">Shikimori</Link> — список аниме</li>
+      <li><Link href="https://vndb.org/u266442">VNDB</Link> — список визуальных новелл</li>
+      <li>
+        <Link href="https://monkeytype.com/profile/Asyomei">Monkeytype</Link> — тест скорости печати
+      </li>
+    </ul>
   </section>
 </DefaultLayout>

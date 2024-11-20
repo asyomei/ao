@@ -1,5 +1,10 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[astro][javascript][javascriptreact][typescript][typescriptreact][json][jsonc][html][css][scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow.json": ".github/workflows/deploy.yml"
-  }
+  },
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }

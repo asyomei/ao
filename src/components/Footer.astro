@@ -1,12 +1,11 @@
-<footer class="flex flex-col items-center pb-6 text-[10px] leading-3 text-secondary *:flex *:gap-1">
-  <section>
-    <div>asyomei.org</div>
-    <span class="select-none">/</span>
-    <div>last updated {import.meta.env.VITE_BUILD_DATE}</div>
-    <span class="select-none">/</span>
-    <a href="https://github.com/asyomei/asyomei.org" class="text-accent-dim">source code</a>
-  </section>
-  <section>
-    <a href="https://catppuccin.com/palette" class="text-accent-dim">catppuccin.com/palette</a>
+---
+import Link from "./Link"
+---
+
+<footer class="text-secondary fixed bottom-0 w-full bg-mantle text-xs">
+  <section class="flex justify-end gap-2 pr-2">
+    <span>Обновлено {import.meta.env.VITE_BUILD_DATE}</span>
+    <span class="select-none">|</span>
+    <Link href="https://catppuccin.com/palette">Catppuccin</Link>
   </section>
 </footer>

@@ -5,11 +5,10 @@ export default {
     extend: {
       backgroundColor: {
         primary: "var(--bg)",
-        accent: "var(--bg-accent)",
+        mantle: "var(--bg-mantle)",
       },
       colors: {
         accent: "var(--text-accent)",
-        "accent-dim": "var(--text-accent-dim)",
         primary: "var(--text-primary)",
         secondary: "var(--text-secondary)",
       },
@@ -17,7 +16,9 @@ export default {
         sm: { max: "720px" },
       },
       fontFamily: {
-        mono: ["Fira Mono", "monospace", "DejaVu Sans"],
+        base: ["Roboto", "Helvetica", "Arial", "sans-serif"],
+        mono: ["Fira Mono", "monospace"],
+        dejavu: ["DejaVu Sans", "monospace"],
       },
     },
   },
