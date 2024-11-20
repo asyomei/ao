@@ -1,11 +1,10 @@
 // @ts-check
 import node from "@astrojs/node"
+import sitemap from "@astrojs/sitemap"
 import solid from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 import icon from "astro-icon"
 import { defineConfig, passthroughImageService } from "astro/config"
-
-import sitemap from "@astrojs/sitemap"
 
 // @ts-ignore
 const isProd = process.env.NODE_ENV === "production"
@@ -18,7 +17,9 @@ export default defineConfig({
   site: "https://asyomei.org",
   scopedStyleStrategy: "where",
   integrations: [
-    icon({ include: { pixelarticons: ["home", "code", "github-2", "sun-alt", "cloud", "moon"] } }),
+    icon({
+      include: { pixelarticons: ["home", "code", "at", "github-2", "sun-alt", "cloud", "moon"] },
+    }),
     tailwind({ applyBaseStyles: false }),
     solid(),
     sitemap(),
