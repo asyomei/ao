@@ -14,7 +14,12 @@ const { title, class: className } = Astro.props
 
 <BaseLayout {title} class="bg-primary font-base text-primary">
   <Sidebar />
-  <main class:list={["flex flex-col gap-6 pb-5 pl-20 pt-8 sm:pl-14 sm:pt-6", className]}>
+  <main
+    class:list={[
+      "flex flex-col gap-6 break-words pb-5 pl-20 pr-20 pt-8 sm:pl-14 sm:pr-2 sm:pt-6",
+      className,
+    ]}
+  >
     <slot />
   </main>
   <Footer />
