@@ -1,6 +1,6 @@
 ---
 import { SEO } from "astro-seo"
-import { THEME_KEY, LIGHT_CSS, DARK_CSS } from "../utils/color-theme"
+import RawThemeSetter from "../components/RawThemeSetter.astro"
 
 export interface Props {
   title?: string
@@ -26,14 +26,7 @@ const { title = "Asyomei", class: className } = Astro.props
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
-    <script is:inline define:vars={{ THEME_KEY, LIGHT_CSS, DARK_CSS }}>
-      var themeStyle = document.createElement("style")
-      themeStyle.id = "theme-style"
-      document.head.appendChild(themeStyle)
-      var theme = localStorage.getItem(THEME_KEY)
-      if (theme === "dark") themeStyle.innerText = DARK_CSS
-      else if (theme === "light") themeStyle.innerText = LIGHT_CSS
-    </script>
+    <RawThemeSetter />
   </head>
   <body class={className}>
     <slot />
@@ -58,26 +51,6 @@ const { title = "Asyomei", class: className } = Astro.props
       --dark-text-accent: #cba6f7;
       --dark-text-primary: #cdd6f4;
       --dark-text-secondary: #a6adc8;
-    }
-
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: var(--light-bg);
-        --bg-mantle: var(--light-bg-mantle);
-        --text-accent: var(--light-text-accent);
-        --text-primary: var(--light-text-primary);
-        --text-secondary: var(--light-text-secondary);
-      }
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: var(--dark-bg);
-        --bg-mantle: var(--dark-bg-mantle);
-        --text-accent: var(--dark-text-accent);
-        --text-primary: var(--dark-text-primary);
-        --text-secondary: var(--dark-text-secondary);
-      }
     }
   }
 </style>

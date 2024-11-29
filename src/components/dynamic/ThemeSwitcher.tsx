@@ -1,13 +1,9 @@
 import clsx from "clsx"
 import { createSignal, type JSXElement, type Signal } from "solid-js"
-import { DARK_CSS, LIGHT_CSS, THEME_KEY, type Theme } from "../../utils/color-theme"
-
-let styleNode: HTMLElement
+import type { Theme } from "../../utils/color-theme"
 
 export default function ThemeSwitcher({ light, browser, dark }: any) {
-  styleNode ??= document.getElementById("theme-style")!
-
-  const current = localStorage.getItem(THEME_KEY) ?? "browser"
+  const current = localStorage.getItem("color-theme") ?? "browser"
   const themeSignal = createSignal(current as Theme)
 
   return (
@@ -29,9 +25,12 @@ function ThemeButton({
   themeSignal: Signal<Theme>
 }) {
   function handleClick() {
-    localStorage.setItem(THEME_KEY, newTheme)
+    if (theme() === newTheme) return
+
     setTheme(newTheme)
-    styleNode.innerText = newTheme === "dark" ? DARK_CSS : newTheme === "light" ? LIGHT_CSS : ""
+    localStorage.setItem("color-theme", newTheme)
+    // updateTheme was added in RawThemeSwitcher
+    ;(window as any).updateTheme()
   }
 
   return (
