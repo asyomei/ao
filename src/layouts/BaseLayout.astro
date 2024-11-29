@@ -16,16 +16,9 @@ const colorSchemeCss = `${LIGHT_CSS}@media(prefers-color-scheme:dark){${DARK_CSS
 <!doctype html>
 <html lang="ru">
   <head>
-    <SEO
-      {title}
-      description="Личная страница Asyomei в интернете"
-      extend={{
-        link: [
-          { rel: "icon", href: "/favicon.png" },
-          { rel: "sitemap", href: "/sitemap-index.xml" },
-        ],
-      }}
-    />
+    <SEO {title} description="Личная страница Asyomei в интернете" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
