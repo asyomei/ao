@@ -15,7 +15,7 @@ export default defineConfig({
   scopedStyleStrategy: "where",
   integrations: [
     icon({
-      include: { pixelarticons: ["home", "code", "github-2", "sun-alt", "cloud", "moon"] },
+      include: { pixelarticons: ["home", "code", "sun-alt", "cloud", "moon"] },
     }),
     tailwind({ applyBaseStyles: false }),
     solid(),
