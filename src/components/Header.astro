@@ -23,8 +23,8 @@ const current = trimSlashes(Astro.url.pathname)
 const isActive = (to: string) => trimSlashes(to) === current
 ---
 
-<menu class="fixed z-10 flex h-full w-min flex-col justify-between gap-6 bg-mantle p-2 align-top">
-  <nav class="flex flex-col gap-4">
+<menu class="flex w-full justify-between gap-6 bg-mantle p-2">
+  <nav class="flex gap-4">
     {
       links.map(({ icon, title, to }) => (
         <Link {title} href={to} class:list={[isActive(to) && "text-accent"]}>

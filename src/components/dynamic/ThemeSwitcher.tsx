@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { createSignal, type JSXElement, type Signal } from "solid-js"
+import { createSignal, type Signal } from "solid-js"
 import type { Theme } from "../../utils/color-theme"
 import iconPixelSun from "../../icons/pixel-sun.svg?raw"
 import iconPixelMoon from "../../icons/pixel-moon.svg?raw"
@@ -10,7 +10,7 @@ export default function ThemeSwitcher() {
   const themeSignal = createSignal(current as Theme)
 
   return (
-    <div class="flex flex-col gap-4">
+    <div class="flex gap-4">
       <ThemeButton
         newTheme="light"
         icon={iconPixelSun}

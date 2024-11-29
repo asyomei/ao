@@ -11,7 +11,7 @@ const { title = "Asyomei", class: className } = Astro.props
 ---
 
 <!doctype html>
-<html lang="ru">
+<html lang="ru" class="h-full">
   <head>
     <SEO {title} description="Личная страница Asyomei в интернете" />
     <link rel="icon" href="/favicon.png" />
@@ -21,7 +21,7 @@ const { title = "Asyomei", class: className } = Astro.props
     <title>{title}</title>
     <InitTheme />
   </head>
-  <body class={className}>
+  <body class:list={["h-full", className]}>
     <slot />
   </body>
 </html>
