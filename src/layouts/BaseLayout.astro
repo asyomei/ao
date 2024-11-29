@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo"
 import RawThemeSetter from "../components/RawThemeSetter.astro"
+import { DARK_CSS, LIGHT_CSS } from "../utils/color-theme"
 
 export interface Props {
   title?: string
@@ -8,6 +9,8 @@ export interface Props {
 }
 
 const { title = "Asyomei", class: className } = Astro.props
+
+const colorSchemeCss = `${LIGHT_CSS}@media(prefers-color-scheme:dark){${DARK_CSS}}`
 ---
 
 <!doctype html>
@@ -26,6 +29,8 @@ const { title = "Asyomei", class: className } = Astro.props
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
+    <style set:html={colorSchemeCss}></style>
+    <!-- overrides style above, so put it after this -->
     <RawThemeSetter />
   </head>
   <body class={className}>

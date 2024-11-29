@@ -15,8 +15,7 @@ const color = {
 
   updateTheme = function () {
     var theme = localStorage.getItem("color-theme") || "browser"
-    styleNode.innerHTML =
-      theme === "browser" ? `${c.light}@media(prefers-color-scheme:dark){${c.dark}}` : c[theme]
+    styleNode.innerHTML = theme !== "browser" ? c[theme] : ""
   }
   updateTheme()
 </script>
