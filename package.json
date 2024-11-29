@@ -15,8 +15,6 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/solid-js": "^4.4.4",
     "@astrojs/tailwind": "^5.1.2",
-    "@fontsource/dejavu-sans": "^5.1.0",
-    "@fontsource/fira-mono": "^5.1.0",
     "@fontsource/roboto": "^5.1.0",
     "@iconify-json/pixelarticons": "^1.2.1",
     "astro": "^4.16.16",

@@ -17,8 +17,6 @@ export default {
       },
       fontFamily: {
         base: ["Roboto", "Helvetica", "Arial", "sans-serif"],
-        mono: ["Fira Mono", "monospace"],
-        dejavu: ["DejaVu Sans", "monospace"],
       },
     },
   },

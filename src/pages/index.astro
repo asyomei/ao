@@ -2,7 +2,6 @@
 import { Image } from "astro:assets"
 import avatar from "../assets/avatar.jpg"
 import CopyableText from "../components/dynamic/CopyableText"
-import Emoji from "../components/dynamic/Emoji"
 import Link from "../components/Link"
 import DefaultLayout from "../layouts/DefaultLayout.astro"
 ---
@@ -19,10 +18,7 @@ import DefaultLayout from "../layouts/DefaultLayout.astro"
   </header>
 
   <section>
-    <p class="flex gap-3">
-      <span>Привет, мир!</span>
-      <Emoji client:idle />
-    </p>
+    <p>Привет, мир!</p>
   </section>
 
   <section>

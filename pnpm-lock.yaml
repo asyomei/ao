@@ -23,12 +23,6 @@ importers:
       '@astrojs/tailwind':
         specifier: ^5.1.2
         version: 5.1.2(astro@4.16.16(@types/node@22.10.1)(rollup@4.27.4)(sass@1.81.0)(typescript@5.7.2))(tailwindcss@3.4.15)
-      '@fontsource/dejavu-sans':
-        specifier: ^5.1.0
-        version: 5.1.0
-      '@fontsource/fira-mono':
-        specifier: ^5.1.0
-        version: 5.1.0
       '@fontsource/roboto':
         specifier: ^5.1.0
         version: 5.1.0
@@ -402,12 +396,6 @@ packages:
     engines: {node: '>=12'}
     cpu: [x64]
     os: [win32]
-
-  '@fontsource/dejavu-sans@5.1.0':
-    resolution: {integrity: sha512-aE7SE5z4rsXhDu2Vtb/3iqSnAibTUyP3qoNYbvKjESHljyY68t/AAvVJaAdbANfGFc8t5MxTAwNk15BsBbytIA==}
-
-  '@fontsource/fira-mono@5.1.0':
-    resolution: {integrity: sha512-6+nftSKApXyN0I9FC5GJuG5TUCh+in5OehtrXRIsHJvq38Pm//oA1kZZYNdXv99JYzLzJ3lzsTAavmS+xGLGDw==}
 
   '@fontsource/roboto@5.1.0':
     resolution: {integrity: sha512-cFRRC1s6RqPygeZ8Uw/acwVHqih8Czjt6Q0MwoUoDe9U3m4dH1HmNDRBZyqlMSFwgNAUKgFImncKdmDHyKpwdg==}
@@ -3181,10 +3169,6 @@ snapshots:
 
   '@esbuild/win32-x64@0.21.5':
     optional: true
-
-  '@fontsource/dejavu-sans@5.1.0': {}
-
-  '@fontsource/fira-mono@5.1.0': {}
 
   '@fontsource/roboto@5.1.0': {}
 
