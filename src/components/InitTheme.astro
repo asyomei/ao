@@ -7,15 +7,18 @@ const color = {
   light: LIGHT_CSS,
   dark: DARK_CSS,
 }
+
+const colorSchemeCss = `${LIGHT_CSS}@media(prefers-color-scheme:dark){${DARK_CSS}}`
 ---
 
+<style set:html={colorSchemeCss}></style>
+<!-- overrides style above, so put it after this -->
 <script is:inline define:vars={{ c: color }}>
   var styleNode = document.createElement("style")
   document.head.appendChild(styleNode)
 
   updateTheme = function () {
-    var theme = localStorage.getItem("color-theme") || "browser"
-    styleNode.innerHTML = theme !== "browser" ? c[theme] : ""
+    styleNode.innerHTML = c[localStorage.getItem("color-theme")] || ""
   }
   updateTheme()
 </script>
