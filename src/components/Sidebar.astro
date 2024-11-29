@@ -1,16 +1,17 @@
 ---
-import { Icon } from "astro-icon/components"
 import ThemeSwitcher from "./dynamic/ThemeSwitcher"
 import Link from "./Link"
+import iconPixelHome from "../icons/pixel-home.svg?raw"
+import iconPixelCode from "../icons/pixel-code.svg?raw"
 
 const links = [
   {
-    icon: "pixelarticons:home",
+    icon: iconPixelHome,
     title: "Главная",
     to: "/",
   },
   {
-    icon: "pixelarticons:code",
+    icon: iconPixelCode,
     title: "Проекты",
     to: "/projects",
   },
@@ -26,15 +27,11 @@ const isActive = (to: string) => trimSlashes(to) === current
   <nav class="flex flex-col gap-4">
     {
       links.map(({ icon, title, to }) => (
-        <Link href={to} class:list={[isActive(to) && "text-accent"]}>
-          <Icon name={icon} {title} size="24" />
+        <Link {title} href={to} class:list={[isActive(to) && "text-accent"]}>
+          <Fragment set:html={icon} />
         </Link>
       ))
     }
   </nav>
-  <ThemeSwitcher client:only="solid-js">
-    <Icon slot="light" size="24" name="pixelarticons:sun-alt" title="Светлая тема" />
-    <Icon slot="browser" size="24" name="pixelarticons:cloud" title="Тема браузера" />
-    <Icon slot="dark" size="24" name="pixelarticons:moon" title="Тёмная тема" />
-  </ThemeSwitcher>
+  <ThemeSwitcher client:only="solid-js" />
 </menu>

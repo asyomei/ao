@@ -3,7 +3,6 @@ import node from "@astrojs/node"
 import sitemap from "@astrojs/sitemap"
 import solid from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
-import icon from "astro-icon"
 import { defineConfig, passthroughImageService } from "astro/config"
 
 // https://astro.build/config
@@ -13,14 +12,7 @@ export default defineConfig({
   server: { host: import.meta.env.PROD },
   site: "https://asyomei.org",
   scopedStyleStrategy: "where",
-  integrations: [
-    icon({
-      include: { pixelarticons: ["home", "code", "sun-alt", "cloud", "moon"] },
-    }),
-    tailwind({ applyBaseStyles: false }),
-    solid(),
-    sitemap(),
-  ],
+  integrations: [tailwind({ applyBaseStyles: false }), solid(), sitemap()],
   devToolbar: { enabled: false },
   image: { service: passthroughImageService() },
   vite: {

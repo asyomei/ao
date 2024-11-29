@@ -1,26 +1,46 @@
 import clsx from "clsx"
 import { createSignal, type JSXElement, type Signal } from "solid-js"
 import type { Theme } from "../../utils/color-theme"
+import iconPixelSun from "../../icons/pixel-sun.svg?raw"
+import iconPixelMoon from "../../icons/pixel-moon.svg?raw"
+import iconPixelCloud from "../../icons/pixel-cloud.svg?raw"
 
-export default function ThemeSwitcher({ light, browser, dark }: any) {
+export default function ThemeSwitcher() {
   const current = localStorage.getItem("color-theme") ?? "browser"
   const themeSignal = createSignal(current as Theme)
 
   return (
     <div class="flex flex-col gap-4">
-      <ThemeButton element={light} newTheme="light" themeSignal={themeSignal} />
-      <ThemeButton element={browser} newTheme="browser" themeSignal={themeSignal} />
-      <ThemeButton element={dark} newTheme="dark" themeSignal={themeSignal} />
+      <ThemeButton
+        newTheme="light"
+        icon={iconPixelSun}
+        title="Светлая тема"
+        themeSignal={themeSignal}
+      />
+      <ThemeButton
+        newTheme="browser"
+        icon={iconPixelCloud}
+        title="Тема браузера"
+        themeSignal={themeSignal}
+      />
+      <ThemeButton
+        newTheme="dark"
+        icon={iconPixelMoon}
+        title="Тёмная тема"
+        themeSignal={themeSignal}
+      />
     </div>
   )
 }
 
 function ThemeButton({
-  element,
+  icon,
+  title,
   newTheme,
   themeSignal: [theme, setTheme],
 }: {
-  element: JSXElement
+  icon: string
+  title: string
   newTheme: Theme
   themeSignal: Signal<Theme>
 }) {
@@ -38,8 +58,8 @@ function ThemeButton({
       type="button"
       onClick={handleClick}
       class={clsx("outline-none", theme() === newTheme && "text-accent")}
-    >
-      {element}
-    </button>
+      title={title}
+      innerHTML={icon}
+    />
   )
 }
