@@ -1,0 +1,8 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-base: #241c1e;
+    --text-primary: #f5c2e7;
+    --text-accent: #cba6f7;
+    --text-secondary: #9399b2;
+  }
+}

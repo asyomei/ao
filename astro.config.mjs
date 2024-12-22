@@ -18,7 +18,7 @@ export default defineConfig({
   vite: {
     ssr: import.meta.env.PROD ? { noExternal: true } : undefined,
     define: {
-      "import.meta.env.VITE_BUILD_DATE": JSON.stringify(getBuildDate()),
+      "import.meta.env.BUILD_DATE": JSON.stringify(getBuildDate()),
     },
   },
 })

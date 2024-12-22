@@ -1,71 +1,61 @@
 ---
-import { Image } from "astro:assets"
-import avatar from "../assets/avatar.jpg"
-import CopyableText from "../components/dynamic/CopyableText"
-import Link from "../components/Link"
-import DefaultLayout from "../layouts/DefaultLayout.astro"
+import A from "#/components/A"
+import Section from "#/components/Section.astro"
+import Table from "#/components/Table.astro"
+import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
 ---
 
 <DefaultLayout>
-  <header class="flex gap-12">
-    <Image src={avatar} alt="avatar" height={100} width={100} class="rounded-full" />
-    <span class="self-center">
-      <h3 class="text-2xl text-accent">
-        Вадим «<Link href="https://mynickname.com/id1805155">Asyomei</Link>»
-      </h3>
-      <span>Начинающий <Link href="https://github.com/Asyomei">разработчик</Link></span>
-    </span>
-  </header>
+  <Section>
+    <h1>sekai, konnichiwa~</h1>
 
-  <section>
-    <p>Привет, мир!</p>
-  </section>
+    <p>
+      i am vadim <A href="https://mynickname.com/id1805155">asyomei</A>
+      <br />
+      yet another dev, so <A href="https://github.com/asyomei">my github</A>
+    </p>
 
-  <section>
-    <p>Я особь мужского пола, родился 9 февраля (поэтому я водолей)</p>
-    <p>Во мне нет ничего особенного, так что вы вряд ли знаете меня</p>
-  </section>
+    <p>currently i am learning web developing and japanese</p>
+  </Section>
 
-  <section>
-    <p>Я плох в следующих направлениях:</p>
-    <ul class="list-inside list-disc">
-      <li>Английский язык</li>
-      <li>
-        Программирование (преимущественно на TypeScript, можете чекнуть раздел
-        {" "}
-        «<Link href="/projects">Проекты</Link>»)
-      </li>
-    </ul>
-  </section>
+  <Section title="personal info">
+    <Table>
+      languages
+      <p>[ru] native, [en] so-so, [ja] only basics</p>
 
-  <section>
-    <p>Список основных контактов:</p>
-    <ul class="list-inside list-[square]">
-      <li><Link href="https://t.me/Asyomei">Телеграм</Link></li>
-      <li><Link href="https://vk.com/asyomei">ВКонтакте</Link></li>
-    </ul>
-  </section>
+      languages
+      <p>[js/ts] love</p>
 
-  <section>
-    <p>Прочие контакты:</p>
-    <ul class="list-inside list-[square]">
-      <li><Link href="https://4pda.to/forum/index.php?showuser=8079654">4PDA</Link></li>
-      <li>
-        Электронная почта —
-        <CopyableText client:idle copyText="vadim@asyomei.org">vadim @ asyomei.org</CopyableText>
-      </li>
-    </ul>
-  </section>
+      birthday
+      <p>feb 9 (aquarius)</p>
 
-  <section>
-    <p>Вот ещё интересные ссылки:</p>
-    <ul class="list-inside list-[square]">
-      <li><Link href="https://last.fm/user/asyomei">Last.fm</Link> — список прослушанной музыки</li>
-      <li><Link href="https://shikimori.one/Asyomei">Shikimori</Link> — список аниме</li>
-      <li><Link href="https://vndb.org/u266442">VNDB</Link> — список визуальных новелл</li>
-      <li>
-        <Link href="https://monkeytype.com/profile/Asyomei">Monkeytype</Link> — тест скорости печати
-      </li>
-    </ul>
-  </section>
+      fav anime
+      <p>chobits, i think</p>
+
+      fav music
+      <p>
+        metal and rock (well, very diverse, check
+        <A href="https://last.fm/user/asyomei">last.fm</A>)
+      </p>
+    </Table>
+  </Section>
+
+  <Section title="contacts">
+    <Table>
+      telegram
+      <p><A href="https://t.me/asyomei">@asyomei</A></p>
+
+      vk
+      <p><A href="https://vk.com/asyomei">@asyomei</A></p>
+
+      email
+      <p>vadim at asyomei.org</p>
+
+      phone
+      <p>don't like</p>
+
+      mail
+      <p>why</p>
+    </Table>
+  </Section>
 </DefaultLayout>
