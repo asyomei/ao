@@ -3,6 +3,7 @@ import node from "@astrojs/node"
 import sitemap from "@astrojs/sitemap"
 import solid from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
+import compress from "@playform/compress"
 import { defineConfig, passthroughImageService } from "astro/config"
 
 // https://astro.build/config
@@ -12,7 +13,7 @@ export default defineConfig({
   server: { host: import.meta.env.PROD },
   site: "https://asyomei.org",
   scopedStyleStrategy: "where",
-  integrations: [tailwind({ applyBaseStyles: false }), solid(), sitemap()],
+  integrations: [tailwind({ applyBaseStyles: false }), solid(), sitemap(), compress()],
   devToolbar: { enabled: false },
   image: { service: passthroughImageService() },
   vite: {
