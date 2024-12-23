@@ -1,13 +1,22 @@
-export default function formatDate(date: Date, format: "date" | "time" | "full" = "full") {
-  const [fmtDate, time] = date.toISOString().split("T")
-  const fmtTime = time.slice(0, -5) // .000Z
+export default function formatDate(date: Date, format: string) {
+  const day = date.getUTCDate()
+  const month = date.getUTCMonth() + 1
+  const year = date.getUTCFullYear()
+  const hours = date.getUTCHours()
+  const minutes = date.getUTCMinutes()
+  const seconds = date.getUTCMinutes()
 
-  switch (format) {
-    case "date":
-      return fmtDate
-    case "time":
-      return fmtTime
-    case "full":
-      return `${fmtDate} ${fmtTime}`
-  }
+  return format.replace(
+    /%./g,
+    fmt =>
+      ({
+        "%%": "%",
+        "%d": String(day),
+        "%m": String(month),
+        "%Y": String(year),
+        "%H": String(hours),
+        "%M": String(minutes),
+        "%s": String(seconds),
+      })[fmt] ?? fmt,
+  )
 }
