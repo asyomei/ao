@@ -1,17 +1,19 @@
 ---
 import { SEO } from "astro-seo"
 import Footer from "./Footer.astro"
+import Nav from "./Nav.astro"
 ---
 
-<html lang="en">
+<html lang="en" class="overflow-y-scroll">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" />
     <SEO title="asyomei" description="personal asyomei website" />
   </head>
-  <body class="text-md bg-base leading font-mono text-primary">
-    <main class="flex flex-col gap-8 p-10 sm:p-4 sm:pb-10">
+  <body class="bg-base font-mono text-md leading text-primary">
+    <Nav />
+    <main class="flex flex-col gap-8 p-10 sm:p-4 sm:pb-10 sm:pt-5">
       <slot />
     </main>
     <Footer />

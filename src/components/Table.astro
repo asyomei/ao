@@ -1,3 +1,17 @@
-<div class="grid-cols-table grid">
+---
+interface Props {
+  type?: "default" | "medium"
+}
+
+const { type = "default" } = Astro.props
+---
+
+<div
+  class:list={[
+    "grid",
+    type === "default" && "grid-cols-table",
+    type === "medium" && "grid-cols-md-table",
+  ]}
+>
   <slot />
 </div>

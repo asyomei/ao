@@ -24,6 +24,7 @@ export default {
     },
     gridTemplateColumns: {
       table: "100px 1fr",
+      "md-table": "120px 1fr",
     },
     screens: {
       sm: { max: "510px" },

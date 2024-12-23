@@ -1,0 +1,27 @@
+---
+import A from "#/components/A"
+import Section from "#/components/Section.astro"
+import Table from "#/components/Table.astro"
+import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
+---
+
+<DefaultLayout>
+  <Section>
+    <h1>so, my projects</h1>
+
+    <p>nothing serious, i am just getting started</p>
+  </Section>
+
+  <Section title="projects">
+    <Table type="medium">
+      <A href="https://github.com/asyomei/asyomei.org">asyomei.org</A>
+      <p>well, my website. i made it with astro</p>
+
+      <A href="https://github.com/asyomei/himawari-bot">himawari bot</A>
+      <p>
+        <A href="https://t.me/himawaridesu_bot">telegram bot</A>, searches anime and manga info
+        using shikimori api (russian)
+      </p>
+    </Table>
+  </Section>
+</DefaultLayout>

@@ -1,0 +1,23 @@
+---
+interface Props {
+  to: string
+}
+
+const { to } = Astro.props
+const { pathname } = Astro.url
+
+const trim = (url: string) => url.replace(/\/$/, "")
+const active = trim(to) === trim(pathname)
+---
+
+{
+  active ? (
+    <span class="font-bold">
+      <slot />
+    </span>
+  ) : (
+    <a href={to}>
+      <slot />
+    </a>
+  )
+}
