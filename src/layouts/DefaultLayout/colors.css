@@ -1,3 +1,10 @@
+:root {
+  --bg-base: #fffdfd;
+  --text-primary: #3e1a6e;
+  --text-accent: #8839ef;
+  --text-secondary: #7c7f93;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-base: #241c1e;
