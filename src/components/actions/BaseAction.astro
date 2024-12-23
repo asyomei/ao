@@ -1,13 +1,18 @@
 ---
+import A from "../A"
+
 interface Props {
   title: string
+  link?: string
 }
 
-const { title } = Astro.props
+const { title, link } = Astro.props
 ---
 
 <fieldset class="border p-4">
-  <legend>{title}</legend>
+  <legend>
+    {link ? <A href={link}>{title}</A> : title}
+  </legend>
 
   <slot />
 </fieldset>
