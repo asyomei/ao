@@ -1,0 +1,13 @@
+---
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<fieldset class="border p-4">
+  <legend>{title}</legend>
+
+  <slot />
+</fieldset>

@@ -1,5 +1,6 @@
 ---
 import A from "#/components/A"
+import LastFMAction from "#/components/actions/LastFMAction.astro"
 import Section from "#/components/Section.astro"
 import Table from "#/components/Table.astro"
 import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
@@ -57,5 +58,11 @@ import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
       mail
       <p>why</p>
     </Table>
+  </Section>
+
+  <Section title="actions">
+    <div class="flex flex-wrap gap-6">
+      <LastFMAction />
+    </div>
   </Section>
 </DefaultLayout>
