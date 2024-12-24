@@ -4,21 +4,24 @@ import sitemap from "@astrojs/sitemap"
 import solid from "@astrojs/solid-js"
 import tailwind from "@astrojs/tailwind"
 import compress from "@playform/compress"
-import { defineConfig } from "astro/config"
+import { defineConfig, passthroughImageService } from "astro/config"
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://asyomei.org",
   output: "server",
   adapter: node({ mode: "standalone" }),
   server: { host: import.meta.env.PROD },
+  site: "https://asyomei.org",
+  scopedStyleStrategy: "where",
+  integrations: [tailwind({ applyBaseStyles: false }), solid(), sitemap(), compress()],
   devToolbar: { enabled: false },
+  image: { service: passthroughImageService() },
   vite: {
+    ssr: import.meta.env.PROD ? { noExternal: true } : undefined,
     define: {
       "import.meta.env.BUILD_DATE": JSON.stringify(getBuildDate()),
     },
   },
-  integrations: [tailwind({ applyBaseStyles: false }), solid(), sitemap(), compress()],
 })
 
 export function getBuildDate() {
