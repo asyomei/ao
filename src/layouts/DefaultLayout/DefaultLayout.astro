@@ -2,6 +2,13 @@
 import { SEO } from "astro-seo"
 import Footer from "./Footer.astro"
 import Nav from "./Nav.astro"
+import UmamiLogScript from "./UmamiLogScript.astro"
+
+interface Props {
+  umami?: boolean
+}
+
+const { umami = false } = Astro.props
 ---
 
 <html lang="en" class="overflow-y-scroll">
@@ -10,6 +17,7 @@ import Nav from "./Nav.astro"
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" />
     <SEO title="asyomei" description="personal asyomei website" />
+    {import.meta.env.PROD && umami && <UmamiLogScript />}
   </head>
   <body class="bg-base font-mono text-md leading text-primary">
     <Nav />

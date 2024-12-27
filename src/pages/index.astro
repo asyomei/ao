@@ -3,10 +3,11 @@ import A from "#/components/A"
 import LastFMAction from "#/components/actions/LastFMAction.astro"
 import Section from "#/components/Section.astro"
 import Table from "#/components/Table.astro"
+import TotalVisitors from "#/components/TotalVisitors.astro"
 import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
 ---
 
-<DefaultLayout>
+<DefaultLayout umami={true}>
   <Section>
     <h1>sekai, konnichiwa~</h1>
 
@@ -64,5 +65,9 @@ import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
     <div class="flex flex-wrap gap-6">
       <LastFMAction />
     </div>
+  </Section>
+
+  <Section>
+    <TotalVisitors />
   </Section>
 </DefaultLayout>

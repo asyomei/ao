@@ -1,58 +1,61 @@
 import { setTimeout as delay } from "timers/promises"
 
-export type Fetcher<T> = (props: { prev?: T }) => Promise<T>
-
-interface Props<T> {
+type Props<T, A extends any[]> = {
   ttlMs: number
   validateMs: number
-  fetcher: Fetcher<T>
-}
+  fetcher: (prev: T | undefined, ...args: A) => Promise<T>
+} & (A["length"] extends 0 ? { key?: undefined } : { key: (...args: A) => string })
 
-export default function useSWR<T>({
+export default function useSWR<T, A extends any[]>({
   ttlMs: ttl,
   validateMs: validateTime,
   fetcher,
-}: Props<T>): () => Promise<T> {
-  let data: T | undefined
-  let updatedAt = 0
+  key: genKey = () => "",
+}: Props<T, A>): (...args: A) => Promise<T> {
+  const dict: Record<string, { data: T; setAt: number }> = {}
 
   let updating = false
+  const setUpdating = () => !updating && (updating = true)
   const finishUpdate = () => (updating = false)
 
-  const firstTime = () => data === undefined
+  const firstTime = (key: string) => !dict[key]
 
-  const fetchData = () => fetcher({ prev: data })
-  const updateData = (newData: T) => {
-    data = newData
-    updatedAt = Date.now()
+  const fetchData = (key: string, args: A) => fetcher(dict[key]?.data, ...args)
+  const setData = (key: string) => (data: T) => (dict[key] = { data, setAt: Date.now() })
+  const updateData = (key: string, args: A) =>
+    fetchData(key, args).then(setData(key)).finally(finishUpdate)
+
+  const needValidate = (key: string) => Date.now() - dict[key].setAt > validateTime
+  const ttlExpired = (key: string) => Date.now() - dict[key].setAt > ttl
+
+  const updateInBackground = (key: string, args: A) => {
+    if (setUpdating()) {
+      console.log("update")
+      updateData(key, args)
+    }
+    return dict[key].data
   }
 
-  const needValidate = () => Date.now() - updatedAt > validateTime
-  const ttlExpired = () => Date.now() - updatedAt > ttl
-
-  const update = async ({ wait }: { wait: boolean }) => {
-    if (!updating) {
-      updating = true
-
-      const promise = fetchData().then(updateData).finally(finishUpdate)
-      if (wait) await promise
-
-      return data!
+  const updateAndWait = async (key: string, args: A) => {
+    if (setUpdating()) {
+      console.log("insert")
+      await updateData(key, args)
     }
-
-    if (wait) while (updating) await delay(50)
-    return data!
+    while (updating) await delay(50)
+    return dict[key].data
   }
 
-  return async () => {
-    if (firstTime() || needValidate()) {
-      return await update({ wait: true })
+  return async (...args) => {
+    const key = genKey(...args)
+
+    if (firstTime(key) || needValidate(key)) {
+      return await updateAndWait(key, args)
     }
 
-    if (ttlExpired()) {
-      return await update({ wait: false })
+    if (ttlExpired(key)) {
+      return updateInBackground(key, args)
     }
 
-    return data!
+    return dict[key].data
   }
 }

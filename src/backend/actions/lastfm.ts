@@ -1,25 +1,25 @@
-import { array, literal, object, optional, pipe, string, url } from "valibot"
+import { z } from "zod"
+import { HOUR, MINUTE } from "../consts"
 import env from "../env"
-import useSWR, { type Fetcher } from "../swr"
-import fetchGET from "../utils/fetch-get"
-import { HOUR, MINUTE } from "./consts"
+import useSWR from "../swr"
+import { fetchGET } from "../utils/fetch"
 
 const API_URL = "https://ws.audioscrobbler.com/2.0/"
 const USER = "asyomei"
 const API_KEY = env.LASTFM_KEY
 
-const TrackSchema = object({
-  artist: object({ "#text": string() }),
-  album: object({ "#text": optional(string()) }),
-  name: string(),
-  url: pipe(string(), url()),
-  date: optional(object({ uts: string() })),
-  "@attr": optional(object({ nowplaying: literal("true") })),
+const TrackSchema = z.object({
+  artist: z.object({ "#text": z.string() }),
+  album: z.object({ "#text": z.string().optional() }),
+  name: z.string(),
+  url: z.string().url(),
+  date: z.object({ uts: z.coerce.number() }).optional(),
+  "@attr": z.object({ nowplaying: z.literal("true") }).optional(),
 })
 
-const ResponseSchema = object({
-  recenttracks: object({
-    track: array(TrackSchema),
+const ResponseSchema = z.object({
+  recenttracks: z.object({
+    track: TrackSchema.array(),
   }),
 })
 
@@ -32,7 +32,7 @@ interface Track {
   date: Date
 }
 
-const fetchTrackInfo: Fetcher<Track> = async ({ prev }) => {
+async function fetchTrackInfo(prev?: Track) {
   const resp = await fetchGET(API_URL, {
     schema: ResponseSchema,
     params: {
@@ -52,11 +52,11 @@ const fetchTrackInfo: Fetcher<Track> = async ({ prev }) => {
     title: track.name,
     playing: track["@attr"]?.nowplaying === "true",
     url: track.url,
-    date: track.date?.uts ? new Date(+track.date.uts * 1000) : new Date(),
+    date: track.date?.uts ? new Date(track.date.uts * 1000) : new Date(),
   }
 }
 
-export default useSWR({
+export const lastfmAction = useSWR({
   ttlMs: 5 * MINUTE,
   validateMs: 1 * HOUR,
   fetcher: fetchTrackInfo,

@@ -1,10 +1,10 @@
 ---
-import lastfm from "#/backend/actions/lastfm"
+import { lastfmAction } from "#/backend/actions/lastfm"
 import formatDate from "#/utils/format-date"
 import A from "../A"
 import BaseAction from "./BaseAction.astro"
 
-const { artist, album, title, playing, url, date } = await lastfm()
+const { artist, album, title, playing, url, date } = await lastfmAction()
 ---
 
 <BaseAction title="last.fm" link="https://last.fm/user/asyomei">

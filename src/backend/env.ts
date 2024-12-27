@@ -1,6 +1,11 @@
 import "dotenv/config"
-import { cleanEnv, str } from "envalid"
+import { z } from "zod"
+import { zodValidate } from "./utils/zod"
 
-export default cleanEnv(process.env, {
-  LASTFM_KEY: str(),
+const EnvSchema = z.object({
+  UMAMI_KEY: z.string(),
+  UMAMI_SITE_ID: z.string(),
+  LASTFM_KEY: z.string(),
 })
+
+export default zodValidate(EnvSchema, process.env)
