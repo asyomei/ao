@@ -29,18 +29,12 @@ export default function useSWR<T, A extends any[]>({
   const ttlExpired = (key: string) => Date.now() - dict[key].setAt > ttl
 
   const updateInBackground = (key: string, args: A) => {
-    if (setUpdating()) {
-      console.log("update")
-      updateData(key, args)
-    }
+    if (setUpdating()) updateData(key, args)
     return dict[key].data
   }
 
   const updateAndWait = async (key: string, args: A) => {
-    if (setUpdating()) {
-      console.log("insert")
-      await updateData(key, args)
-    }
+    if (setUpdating()) await updateData(key, args)
     while (updating) await delay(50)
     return dict[key].data
   }
