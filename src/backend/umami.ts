@@ -1,8 +1,9 @@
+import { isbot } from "isbot"
 import { z } from "zod"
 import { HOUR, MINUTE } from "./consts"
 import env from "./env"
 import useSWR from "./swr"
-import { fetchGET } from "./utils/fetch"
+import { fetchGET, fetchPOST } from "./utils/fetch"
 
 const KEY = env.UMAMI_KEY
 const SITE_ID = env.UMAMI_SITE_ID
@@ -36,3 +37,29 @@ export const getVisitorsCount = useSWR({
   fetcher: fetchVisitorsCount,
   key: String,
 })
+
+export async function logVisitor(req: Request) {
+  if (import.meta.env.DEV) return
+  if (isbot(req.headers.get("User-Agent"))) return
+
+  const acceptLng = req.headers.get("Accept-Language") || ""
+  const language = acceptLng.split(";")[0].split(",")[0]
+
+  return await fetchPOST("https://cloud.umami.is/api/send", {
+    headers: {
+      "User-Agent": req.headers.get("User-Agent") || "",
+    },
+    body: {
+      type: "event",
+      payload: {
+        language,
+        website: env.UMAMI_SITE_ID,
+        hostname: req.headers.get("Host") || "",
+        referrer: req.headers.get("Referer") || "",
+        screen: "",
+        title: "asyomei",
+        url: new URL(req.url).pathname,
+      },
+    },
+  })
+}

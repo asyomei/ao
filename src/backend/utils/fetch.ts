@@ -9,6 +9,11 @@ interface GetProps<S extends z.Schema> {
   schema: S
 }
 
+interface PostProps {
+  headers?: HeadersInit
+  body: Record<string, any>
+}
+
 export async function fetchGET<S extends z.Schema>(
   url: string,
   { headers, params, schema }: GetProps<S>,
@@ -18,4 +23,15 @@ export async function fetchGET<S extends z.Schema>(
 
   const resp = await fetch(`${url}?${queryString}`, { headers })
   return zodValidate(schema, await resp.json())
+}
+
+export async function fetchPOST(url: string, { headers, body }: PostProps) {
+  return await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    method: "POST",
+    body: JSON.stringify(body),
+  })
 }
