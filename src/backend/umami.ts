@@ -48,6 +48,7 @@ export async function logVisitor(req: Request) {
   return await fetchPOST("https://cloud.umami.is/api/send", {
     headers: {
       "User-Agent": req.headers.get("User-Agent") || "",
+      "X-Forwarded-For": req.headers.get("X-Forwarded-For")?.split(",")[0] || "",
     },
     body: {
       type: "event",
