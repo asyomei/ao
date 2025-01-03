@@ -11,12 +11,12 @@ export default function formatDate(date: Date, format: string) {
     fmt =>
       ({
         "%%": "%",
-        "%d": String(day),
-        "%m": String(month),
+        "%d": String(day).padStart(2, "0"),
+        "%m": String(month).padStart(2, "0"),
         "%Y": String(year),
-        "%H": String(hours),
-        "%M": String(minutes),
-        "%s": String(seconds),
+        "%H": String(hours).padStart(2, "0"),
+        "%M": String(minutes).padStart(2, "0"),
+        "%s": String(seconds).padStart(2, "0"),
       })[fmt] ?? fmt,
   )
 }
