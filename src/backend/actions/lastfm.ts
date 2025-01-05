@@ -10,7 +10,6 @@ const API_KEY = env.LASTFM_KEY
 
 const TrackSchema = z.object({
   artist: z.object({ "#text": z.string() }),
-  album: z.object({ "#text": z.string().optional() }),
   name: z.string(),
   url: z.string().url(),
   date: z.object({ uts: z.coerce.number() }).optional(),
@@ -25,7 +24,6 @@ const ResponseSchema = z.object({
 
 interface Track {
   artist: string
-  album?: string
   title: string
   playing: boolean
   url: string
@@ -48,7 +46,6 @@ async function fetchTrackInfo(prev?: Track) {
   const track = resp.recenttracks.track[0]
   return {
     artist: track.artist["#text"],
-    album: track.album["#text"],
     title: track.name,
     playing: track["@attr"]?.nowplaying === "true",
     url: track.url,
