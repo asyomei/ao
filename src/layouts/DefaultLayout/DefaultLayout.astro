@@ -9,9 +9,7 @@ interface Props {
 }
 
 const { umami = false } = Astro.props
-if (umami) {
-  await logVisitor(Astro.request)
-}
+if (umami) logVisitor(Astro.request)
 ---
 
 <html lang="en" class="overflow-y-scroll">
