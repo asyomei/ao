@@ -4,6 +4,7 @@ import Section from "#/components/Section.astro"
 import Table from "#/components/Table.astro"
 import TotalVisitors from "#/components/TotalVisitors.astro"
 import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
+import { himawariBot, proj } from "#/urls"
 ---
 
 <DefaultLayout umami={true}>
@@ -15,13 +16,13 @@ import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
 
   <Section title="projects">
     <Table type="medium">
-      <A href="https://github.com/asyomei/asyomei.org">asyomei.org</A>
+      <A href={proj.website}>asyomei.org</A>
       <p>well, my website. i made it with astro</p>
 
-      <A href="https://github.com/asyomei/himawari-bot">himawari bot</A>
+      <A href={proj.himawari}>himawari bot</A>
       <p>
-        <A href="https://t.me/himawaridesu_bot">telegram bot</A>, searches anime and manga info
-        using shikimori api (russian)
+        <A href={himawariBot}>telegram bot</A>, searches anime and manga info using shikimori api
+        (russian)
       </p>
     </Table>
   </Section>

@@ -5,6 +5,7 @@ import Section from "#/components/Section.astro"
 import Table from "#/components/Table.astro"
 import TotalVisitors from "#/components/TotalVisitors.astro"
 import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
+import { me } from "#/urls"
 ---
 
 <DefaultLayout umami={true}>
@@ -12,9 +13,9 @@ import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
     <h1>sekai, konnichiwa~</h1>
 
     <p>
-      i am vadim <A href="https://mynickname.com/asyomei">asyomei</A>
+      i am vadim <A href={me.mynickname}>asyomei</A>
       <br />
-      yet another dev, so <A href="https://github.com/asyomei">my github</A>
+      yet another dev, so <A href={me.github}>my github</A>
     </p>
 
     <p>currently i am learning web developing and japanese</p>
@@ -34,7 +35,7 @@ import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
       fav music
       <p>
         well, very diverse, check
-        <A href="https://last.fm/user/asyomei">last.fm</A>
+        <A href={me.lastfm}>last.fm</A>
       </p>
     </Table>
   </Section>
@@ -42,13 +43,13 @@ import DefaultLayout from "#/layouts/DefaultLayout/DefaultLayout.astro"
   <Section title="contacts">
     <Table>
       telegram
-      <p><A href="https://t.me/asyomei">@asyomei</A></p>
+      <p><A href={me.telegram}>@asyomei</A></p>
 
       vk
-      <p><A href="https://vk.com/asyomei">@asyomei</A></p>
+      <p><A href={me.vk}>@asyomei</A></p>
 
       4pda
-      <p><A href="https://4pda.to/forum/index.php?showuser=8079654">@vabgalimov</A></p>
+      <p><A href={me.fourpda}>@vabgalimov</A></p>
 
       email
       <p>vadim at asyomei.org</p>
