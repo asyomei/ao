@@ -2,6 +2,7 @@ export const me = {
   vk: "https://vk.com/asyomei",
   github: "https://github.com/asyomei",
   lastfm: "https://last.fm/user/asyomei",
+  bluesky: "https://bsky.app/profile/asyomei.org",
   fourpda: "https://4pda.to/forum/index.php?showuser=8079654",
   telegram: "https://t.me/asyomei",
   mynickname: "https://mynickname.com/asyomei",
