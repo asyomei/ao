@@ -8,6 +8,8 @@ export const me = {
   mynickname: "https://mynickname.com/asyomei",
 }
 
+export const gochuumonShiki = "https://shikimori.one/animes/21273-gochuumon-wa-usagi-desu-ka"
+
 export const proj = {
   website: `${me.github}/asyomei.org`,
   himawari: `${me.github}/himawari-bot`,
