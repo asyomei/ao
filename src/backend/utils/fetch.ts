@@ -1,7 +1,7 @@
-import type { z } from "zod"
-import compact from "./compact"
-import mapValue from "./map-value"
-import { zodValidate } from "./zod"
+import type { z } from 'zod'
+import compact from './compact'
+import mapValue from './map-value'
+import { zodValidate } from './zod'
 
 interface GetProps<S extends z.Schema> {
   headers?: HeadersInit
@@ -28,10 +28,10 @@ export async function fetchGET<S extends z.Schema>(
 export async function fetchPOST(url: string, { headers, body }: PostProps) {
   return await fetch(url, {
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json',
       ...headers,
     },
-    method: "POST",
+    method: 'POST',
     body: JSON.stringify(body),
   })
 }

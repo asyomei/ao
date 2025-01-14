@@ -1,6 +1,6 @@
-import "dotenv/config"
-import { z } from "zod"
-import { zodValidate } from "./utils/zod"
+import 'dotenv/config'
+import { z } from 'zod'
+import { zodValidate } from './utils/zod'
 
 const EnvSchema = z.object({
   UMAMI_KEY: z.string(),

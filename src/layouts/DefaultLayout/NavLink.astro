@@ -6,7 +6,7 @@ interface Props {
 const { to } = Astro.props
 const { pathname } = Astro.url
 
-const trim = (url: string) => url.replace(/\/$/, "")
+const trim = (url: string) => url.replace(/\/$/, '')
 const active = trim(to) === trim(pathname)
 ---
 

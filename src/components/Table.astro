@@ -1,16 +1,16 @@
 ---
 interface Props {
-  type?: "default" | "medium"
+  type?: 'default' | 'medium'
 }
 
-const { type = "default" } = Astro.props
+const { type = 'default' } = Astro.props
 ---
 
 <div
   class:list={[
-    "grid",
-    type === "default" && "grid-cols-table",
-    type === "medium" && "grid-cols-md-table",
+    'grid',
+    type === 'default' && 'grid-cols-table',
+    type === 'medium' && 'grid-cols-md-table',
   ]}
 >
   <slot />

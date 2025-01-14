@@ -1,19 +1,19 @@
-import { z } from "zod"
-import { HOUR, MINUTE } from "../consts"
-import env from "../env"
-import useSWR from "../swr"
-import { fetchGET } from "../utils/fetch"
+import { z } from 'zod'
+import { HOUR, MINUTE } from '../consts'
+import env from '../env'
+import useSWR from '../swr'
+import { fetchGET } from '../utils/fetch'
 
-const API_URL = "https://ws.audioscrobbler.com/2.0/"
-const USER = "asyomei"
+const API_URL = 'https://ws.audioscrobbler.com/2.0/'
+const USER = 'asyomei'
 const API_KEY = env.LASTFM_KEY
 
 const TrackSchema = z.object({
-  artist: z.object({ "#text": z.string() }),
+  artist: z.object({ '#text': z.string() }),
   name: z.string(),
   url: z.string().url(),
   date: z.object({ uts: z.coerce.number() }).optional(),
-  "@attr": z.object({ nowplaying: z.literal("true") }).optional(),
+  '@attr': z.object({ nowplaying: z.literal('true') }).optional(),
 })
 
 const ResponseSchema = z.object({
@@ -35,9 +35,9 @@ async function fetchTrackInfo(prev?: Track) {
     schema: ResponseSchema,
     params: {
       api_key: API_KEY,
-      method: "user.getrecenttracks",
+      method: 'user.getrecenttracks',
       user: USER,
-      format: "json",
+      format: 'json',
       limit: 1,
       from: prev?.date ? prev.date.getTime() / 1000 : undefined,
     },
@@ -45,9 +45,9 @@ async function fetchTrackInfo(prev?: Track) {
 
   const track = resp.recenttracks.track[0]
   return {
-    artist: track.artist["#text"],
+    artist: track.artist['#text'],
     title: track.name,
-    playing: track["@attr"]?.nowplaying === "true",
+    playing: track['@attr']?.nowplaying === 'true',
     url: track.url,
     date: track.date?.uts ? new Date(track.date.uts * 1000) : new Date(),
   }

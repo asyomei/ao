@@ -1,16 +1,16 @@
-import { setTimeout as delay } from "timers/promises"
+import { setTimeout as delay } from 'timers/promises'
 
 type Props<T, A extends any[]> = {
   ttlMs: number
   validateMs: number
   fetcher: (prev: T | undefined, ...args: A) => Promise<T>
-} & (A["length"] extends 0 ? { key?: undefined } : { key: (...args: A) => string })
+} & (A['length'] extends 0 ? { key?: undefined } : { key: (...args: A) => string })
 
 export default function useSWR<T, A extends any[]>({
   ttlMs: ttl,
   validateMs: validateTime,
   fetcher,
-  key: genKey = () => "",
+  key: genKey = () => '',
 }: Props<T, A>): (...args: A) => Promise<T> {
   const dict: Record<string, { data: T; setAt: number }> = {}
 

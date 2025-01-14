@@ -1,5 +1,5 @@
-import type { z } from "zod"
-import { fromError } from "zod-validation-error"
+import type { z } from 'zod'
+import { fromError } from 'zod-validation-error'
 
 export function zodValidate<T extends z.Schema>(schema: T, value: unknown): z.TypeOf<T> {
   const { data, error } = schema.safeParse(value)
