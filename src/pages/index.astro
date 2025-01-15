@@ -1,19 +1,20 @@
 ---
 import A from '#/components/A'
-import LastFMAction from '#/components/actions/LastFMAction.astro'
 import Section from '#/components/Section.astro'
 import Table from '#/components/Table.astro'
-import TotalVisitors from '#/components/TotalVisitors.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
 import { gochuumonShiki, me } from '#/urls'
+import randomInt from '#/utils/random-int'
+
+const hi = 'h' + 'i'.repeat(randomInt(1, 5))
 ---
 
-<DefaultLayout umami={true}>
+<DefaultLayout>
   <Section>
-    <h1>sekai, konnichiwa~</h1>
+    <h1>{hi}!</h1>
 
     <p>
-      i am vadim <A href={me.mynickname}>asyomei</A>
+      i am <b>vadim <A href={me.mynickname} style={{ color: 'var(--text-primary)' }}>asyomei</A></b>
       <br />
       yet another dev, so <A href={me.github}>my github</A>
     </p>
@@ -24,12 +25,12 @@ import { gochuumonShiki, me } from '#/urls'
   <Section title="personal info">
     <Table>
       languages
-      <p>[ru] native, [en] so-so, [ja] only basics</p>
+      <p>[ru] native [en] maybe [ja] learn</p>
 
       languages
       <p>[js/ts] love</p>
 
-      birthday
+      birth day
       <p>feb 9 (aquarius)</p>
 
       fav anime
@@ -39,6 +40,8 @@ import { gochuumonShiki, me } from '#/urls'
 
       fav music
       <p>
+        hard metal and rock, cute jpop;
+        <br />
         well, very diverse, check
         <A href={me.lastfm}>last.fm</A>
       </p>
@@ -68,15 +71,5 @@ import { gochuumonShiki, me } from '#/urls'
       mail
       <p>why</p>
     </Table>
-  </Section>
-
-  <Section title="actions">
-    <div class="flex flex-wrap gap-6">
-      <LastFMAction />
-    </div>
-  </Section>
-
-  <Section>
-    <TotalVisitors />
   </Section>
 </DefaultLayout>

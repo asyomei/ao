@@ -2,8 +2,32 @@
 import NavLink from './NavLink.astro'
 ---
 
-<nav class="absolute right-12 top-8 flex gap-2 border px-2 py-1 sm:right-6 sm:top-4">
+<nav>
   <NavLink to="/">main</NavLink>
-  <span class="select-none text-secondary">/</span>
+  <span class="sep">/</span>
   <NavLink to="/projects">projects</NavLink>
 </nav>
+
+<style>
+  nav {
+    position: absolute;
+    right: 48px;
+    top: 32px;
+    display: flex;
+    gap: 8px;
+    border: 1px solid var(--text-primary);
+    padding: 4px 8px;
+  }
+
+  .sep {
+    user-select: none;
+    color: var(--text-secondary);
+  }
+
+  @media (max-width: 510px) {
+    nav {
+      right: 24px;
+      top: 16px;
+    }
+  }
+</style>

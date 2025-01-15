@@ -2,12 +2,11 @@
 import A from '#/components/A'
 import Section from '#/components/Section.astro'
 import Table from '#/components/Table.astro'
-import TotalVisitors from '#/components/TotalVisitors.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
 import { himawariBot, proj } from '#/urls'
 ---
 
-<DefaultLayout umami={true}>
+<DefaultLayout>
   <Section>
     <h1>so, my projects</h1>
 
@@ -25,9 +24,5 @@ import { himawariBot, proj } from '#/urls'
         (russian)
       </p>
     </Table>
-  </Section>
-
-  <Section>
-    <TotalVisitors />
   </Section>
 </DefaultLayout>

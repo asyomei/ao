@@ -1,27 +1,19 @@
 ---
 import { SEO } from 'astro-seo'
-import { logVisitor } from '#/backend/umami'
 import Footer from './Footer.astro'
 import Nav from './Nav.astro'
-
-interface Props {
-  umami?: boolean
-}
-
-const { umami = false } = Astro.props
-if (umami) logVisitor(Astro.request)
 ---
 
-<html lang="en" class="overflow-y-scroll">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" />
     <SEO title="asyomei" description="personal asyomei website" />
   </head>
-  <body class="bg-base font-mono text-md leading text-primary">
+  <body>
     <Nav />
-    <main class="flex flex-col gap-8 p-10 sm:p-4 sm:pb-10 sm:pt-5">
+    <main>
       <slot />
     </main>
     <Footer />
@@ -29,19 +21,29 @@ if (umami) logVisitor(Astro.request)
 </html>
 
 <style is:global>
-  @import './colors.css';
+  @import './css/reset.css';
+  @import './css/colors.css';
+  @import './css/global.css';
 
-  @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+  body {
+    overflow-y: scroll;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: monospace, ui-monospace;
+    font-size: 14px;
+    line-height: 18px;
+  }
 
-  @layer base {
-    h2 {
-      @apply font-bold;
-    }
+  body > main {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 40px;
+  }
 
-    a {
-      @apply text-accent underline;
+  @media (max-width: 510px) {
+    body > main {
+      padding: 20px 16px 40px;
     }
   }
 </style>

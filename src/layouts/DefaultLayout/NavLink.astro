@@ -1,4 +1,6 @@
 ---
+import A from '#/components/A'
+
 interface Props {
   to: string
 }
@@ -12,12 +14,12 @@ const active = trim(to) === trim(pathname)
 
 {
   active ? (
-    <span class="font-bold">
+    <span style={{ fontWeight: 'bold' }}>
       <slot />
     </span>
   ) : (
-    <a href={to}>
+    <A href={to}>
       <slot />
-    </a>
+    </A>
   )
 }
