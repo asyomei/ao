@@ -55,7 +55,7 @@ async function fetchLastfm(apiKey: string, user: string): Promise<Track> {
     title: track.name,
     url: track.url,
     playing: track['@attr']?.nowplaying === 'true',
-    date: track.date ? new Date(+track.date.uts / 1000) : new Date(),
+    date: track.date ? new Date(+track.date.uts * 1000) : new Date(),
   }
 }
 
