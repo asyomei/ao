@@ -13,7 +13,7 @@ import Nav from './Nav.astro'
   </head>
   <body>
     <Nav />
-    <main>
+    <main class="main">
       <slot />
     </main>
     <Footer />
@@ -34,7 +34,7 @@ import Nav from './Nav.astro'
     line-height: 18px;
   }
 
-  body > main {
+  .main {
     display: flex;
     flex-direction: column;
     gap: 32px;

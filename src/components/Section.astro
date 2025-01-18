@@ -6,14 +6,14 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<section>
+<section class="section">
   {title && <h2>--- {title} ---</h2>}
 
   <slot />
 </section>
 
-<style>
-  section {
+<style is:global>
+  .section {
     display: flex;
     flex-direction: column;
     gap: 20px;

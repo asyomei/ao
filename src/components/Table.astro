@@ -6,17 +6,17 @@ interface Props {
 const { type } = Astro.props
 ---
 
-<div class:list={[type !== 'default' && type]}>
+<div class:list={['table', type !== 'default' && type]}>
   <slot />
 </div>
 
-<style>
-  div {
+<style is:global>
+  .table {
     display: grid;
     grid-template-columns: 100px 1fr;
   }
 
-  .medium {
+  .table.medium {
     grid-template-columns: 120px 1fr;
   }
 </style>

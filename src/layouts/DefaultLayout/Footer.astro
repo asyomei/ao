@@ -3,14 +3,14 @@ import A from '#/components/A'
 import { proj, teidesu } from '#/urls'
 ---
 
-<footer>
+<footer class="footer">
   inspired by <A href={teidesu}>tei.su</A>
   / updated {import.meta.env.BUILD_DATE}
   / <A href={proj.website}>source code</A>
 </footer>
 
-<style>
-  footer {
+<style is:global>
+  .footer {
     padding-bottom: 8px;
     text-align: center;
     font-size: 11px;

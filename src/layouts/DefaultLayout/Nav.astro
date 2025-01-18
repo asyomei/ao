@@ -2,14 +2,14 @@
 import NavLink from './NavLink.astro'
 ---
 
-<nav>
+<nav class="nav">
   <NavLink to="/">main</NavLink>
   <span class="sep">/</span>
   <NavLink to="/projects">projects</NavLink>
 </nav>
 
-<style>
-  nav {
+<style is:global>
+  .nav {
     position: absolute;
     right: 48px;
     top: 32px;
@@ -19,13 +19,13 @@ import NavLink from './NavLink.astro'
     padding: 4px 8px;
   }
 
-  .sep {
+  .nav > .sep {
     user-select: none;
     color: var(--text-secondary);
   }
 
   @media (max-width: 510px) {
-    nav {
+    .nav {
       right: 24px;
       top: 16px;
     }
