@@ -1,5 +1,6 @@
 :root {
   --bg-base: #fdf8ff;
+  --bg-overlay: #e9e4eb;
   --text-primary: #651a68;
   --text-accent: #3e5eeb;
   --text-secondary: #6c6e7e;
@@ -8,6 +9,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-base: #241c1e;
+    --bg-overlay: #443034;
     --text-primary: #d387a4;
     --text-accent: #847ecc;
     --text-secondary: #747181;

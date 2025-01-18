@@ -3,6 +3,11 @@ h2 {
   font-weight: 700;
 }
 
+i {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
 a {
   color: var(--text-accent);
 }

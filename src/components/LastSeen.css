@@ -1,0 +1,18 @@
+.last-seen > summary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.last-seen > summary > .marker::after {
+  content: '(open)';
+  color: var(--text-secondary);
+}
+
+.last-seen[open] > summary > .marker::after {
+  content: '(close)';
+}
+
+.last-seen > summary:hover {
+  background-color: var(--bg-overlay);
+  cursor: pointer;
+}

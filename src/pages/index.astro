@@ -1,10 +1,14 @@
 ---
+import { fetchLastSeenItems } from '#/backend/last-seen'
 import A from '#/components/A'
+import LastSeen from '#/components/LastSeen'
 import Section from '#/components/Section.astro'
 import Table from '#/components/Table.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
 import { gochuumonShiki, me } from '#/urls'
 import randomInt from '#/utils/random-int'
+
+const lastSeenItems = await fetchLastSeenItems()
 
 const hi = 'h' + 'i'.repeat(randomInt(1, 5))
 ---
@@ -32,6 +36,15 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
 
       birth day
       <p>feb 9 (aquarius)</p>
+
+      {
+        lastSeenItems.length > 0 && (
+          <>
+            last seen
+            <LastSeen items={lastSeenItems} />
+          </>
+        )
+      }
 
       fav anime
       <p>
