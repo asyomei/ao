@@ -1,3 +1,4 @@
+import bsky from './bsky'
 import lastfm from './lastfm'
 import type { LastSeenItem } from './types'
 
@@ -7,8 +8,10 @@ export async function fetchLastSeenItems(): Promise<LastSeenItem[]> {
     if (item) items.push(item)
   }
 
-  const fetches = [lastfm()]
+  const fetches = [lastfm(), bsky()]
 
   await Promise.all(fetches.map(x => x.then(add, console.error)))
-  return items
+  return items.sort((a, b) => time(b) - time(a))
 }
+
+const time = (x: LastSeenItem) => x.date.getTime()
