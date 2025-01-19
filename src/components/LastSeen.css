@@ -1,3 +1,9 @@
+.last-seen {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .last-seen > summary {
   display: flex;
   justify-content: space-between;
@@ -15,4 +21,16 @@
 .last-seen > summary:hover {
   background-color: var(--bg-overlay);
   cursor: pointer;
+}
+
+.last-seen-item {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 800px) {
+  .last-seen-item {
+    flex-direction: column;
+    gap: 0px;
+  }
 }

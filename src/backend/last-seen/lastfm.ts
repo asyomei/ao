@@ -72,7 +72,7 @@ async function lastfm(): Promise<LastSeenItem | undefined> {
       text: `${lastfm.title} - ${lastfm.artist}`,
       url: lastfm.url,
     },
-    date: lastfm.playing ? 'now' : lastfm.date,
+    date: lastfm.date,
   }
 }
 

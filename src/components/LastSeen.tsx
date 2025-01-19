@@ -1,6 +1,7 @@
 import './LastSeen.css'
 import { DAY, HOUR, MINUTE, WEEK } from '#/backend/consts'
 import type { LastSeenItem } from '#/backend/last-seen/types'
+import shortText from '#/utils/short-text'
 import A from './A'
 
 interface Props {
@@ -9,15 +10,13 @@ interface Props {
 
 export default function LastSeen({ items }: Props) {
   const children = items.map(item => (
-    <p>
+    <p class="last-seen-item">
       {applyTemplate(item)}
       <i>
-        {' -- '}
+        {'@ '}
         <A href={item.service.url}>{item.service.text}</A>
         {', '}
-        <span title={item.date !== 'now' ? formatDate(item.date) : undefined}>
-          {item.date === 'now' ? 'now' : (humanize(item.date) ?? formatDate(item.date))}
-        </span>
+        <span title={formatDate(item.date)}>{humanize(item.date) ?? formatDate(item.date)}</span>
       </i>
     </p>
   ))
@@ -35,12 +34,18 @@ export default function LastSeen({ items }: Props) {
 }
 
 const applyTemplate = ({ content: { text, url }, template }: LastSeenItem) => {
-  const content = <A href={url}>{text}</A>
+  const content = <A href={url}>{shortText(text, 40)}</A>
 
   if (!template) return content
 
   const [begin, end = ''] = template.split('%s')
-  return [begin, content, end]
+  return (
+    <p>
+      {begin}
+      {content}
+      {end}
+    </p>
+  )
 }
 
 const formatDate = (date: Date) => {
@@ -51,8 +56,9 @@ const formatDate = (date: Date) => {
   const day = date.getDate()
   const hours = date.getHours()
   const minutes = date.getMinutes()
+  const seconds = date.getSeconds()
 
-  return `${year}-${pad(month)}-${pad(day)} ${pad(hours)}:${pad(minutes)}`
+  return `${year}-${pad(month)}-${pad(day)} ${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
 }
 
 const humanize = (date: Date) => {
