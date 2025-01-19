@@ -14,9 +14,9 @@ const active = trim(to) === trim(pathname)
 
 {
   active ? (
-    <span style={{ fontWeight: 'bold' }}>
+    <b>
       <slot />
-    </span>
+    </b>
   ) : (
     <A href={to}>
       <slot />
