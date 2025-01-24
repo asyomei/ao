@@ -11,7 +11,7 @@ export default function LastSeen({ items }: Props) {
   const children = items.map(({ content, service, date, suffix }) => (
     <p class="item">
       <span class="content">
-        <A href={content.url} class="link">
+        <A href={content.url} class="link" title={content.text}>
           {content.text}
         </A>
         {suffix && <span class="suffix">{suffix}</span>}
