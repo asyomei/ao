@@ -10,4 +10,5 @@ i {
 
 a {
   color: var(--text-accent);
+  text-decoration: none;
 }

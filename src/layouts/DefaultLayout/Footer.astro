@@ -1,12 +1,17 @@
 ---
 import A from '#/components/A'
-import { proj, teidesu } from '#/urls'
+import { gruvbox, proj, teidesu } from '#/urls'
 ---
 
 <footer class="footer">
-  inspired by <A href={teidesu}>tei.su</A>
-  / updated {import.meta.env.BUILD_DATE}
-  / <A href={proj.website}>source code</A>
+  <p>
+    inspired by <A href={teidesu}>tei.su</A>
+    / using <A href={gruvbox}>gruvbox palette</A>
+  </p>
+  <p>
+    <A href={proj.website}>source code</A>
+    (updated {import.meta.env.BUILD_DATE})
+  </p>
 </footer>
 
 <style is:global>
