@@ -4,6 +4,9 @@
 }
 
 .last-seen {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   white-space: nowrap;
   overflow: hidden;
 }
