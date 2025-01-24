@@ -1,7 +1,6 @@
 import './LastSeen.css'
 import { DAY, HOUR, MINUTE, WEEK } from '#/backend/consts'
 import type { LastSeenItem } from '#/backend/last-seen/types'
-import shortText from '#/utils/short-text'
 import A from './A'
 
 interface Props {
@@ -9,56 +8,35 @@ interface Props {
 }
 
 export default function LastSeen({ items }: Props) {
-  const children = items.map(item => (
-    <p class="last-seen-item">
-      {applyTemplate(item)}
-      <i>
-        {'@ '}
-        <A href={item.service.url}>{item.service.text}</A>
-        {', '}
-        <span title={formatDate(item.date)}>{humanize(item.date) ?? formatDate(item.date)}</span>
-      </i>
+  const children = items.map(({ content, service, date, suffix }) => (
+    <p class="item">
+      <span class="content">
+        <A href={content.url} class="link">
+          {content.text}
+        </A>
+        {suffix && <span class="suffix">{suffix}</span>}
+      </span>
+      <span class="service">
+        @ <A href={service.url}>{service.text}</A>,{' '}
+        <span title={formatDate(date)}>{humanize(date) ?? formatDate(date)}</span>
+      </span>
     </p>
   ))
 
-  if (children.length === 1) return children
-
-  children[0] = (
-    <summary>
-      {children[0]}
-      <span class="marker" />
-    </summary>
-  )
-
-  return <details class="last-seen">{children}</details>
-}
-
-const applyTemplate = ({ content: { text, url }, template }: LastSeenItem) => {
-  const content = <A href={url}>{shortText(text, 40)}</A>
-
-  if (!template) return content
-
-  const [begin, end = ''] = template.split('%s')
-  return (
-    <p>
-      {begin}
-      {content}
-      {end}
-    </p>
-  )
+  return <div class="last-seen">{children}</div>
 }
 
 const formatDate = (date: Date) => {
   const pad = (n: number) => String(n).padStart(2, '0')
 
-  const year = date.getUTCFullYear()
-  const month = date.getUTCMonth() + 1
-  const day = date.getUTCDate()
-  const hours = date.getUTCHours()
-  const minutes = date.getUTCMinutes()
-  const seconds = date.getUTCSeconds()
+  const year = pad(date.getUTCFullYear())
+  const month = pad(date.getUTCMonth() + 1)
+  const day = pad(date.getUTCDate())
+  const hours = pad(date.getUTCHours())
+  const minutes = pad(date.getUTCMinutes())
+  const seconds = pad(date.getUTCSeconds())
 
-  return `${year}-${pad(month)}-${pad(day)} ${pad(hours)}:${pad(minutes)}:${pad(seconds)} utc`
+  return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} utc`
 }
 
 const humanize = (date: Date) => {

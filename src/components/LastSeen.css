@@ -1,36 +1,35 @@
-.last-seen {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.last-seen > summary {
-  display: flex;
-  justify-content: space-between;
-}
-
-.last-seen > summary > .marker::after {
-  content: '(open)';
-  color: var(--text-secondary);
-}
-
-.last-seen[open] > summary > .marker::after {
-  content: '(close)';
-}
-
-.last-seen > summary:hover {
-  background-color: var(--bg-overlay);
-  cursor: pointer;
-}
-
-.last-seen-item {
+.last-seen > .item {
   display: flex;
   gap: 8px;
 }
 
-@media (max-width: 800px) {
-  .last-seen-item {
+.last-seen {
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.last-seen > .item > .content {
+  display: flex;
+  overflow: hidden;
+}
+
+.last-seen > .item > .content > .link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.last-seen > .item > .content > .suffix {
+  font-size: 12px;
+}
+
+.last-seen > .item > .service {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+@media (max-width: 510px) {
+  .last-seen > .item {
     flex-direction: column;
-    gap: 0px;
+    gap: 0;
   }
 }
