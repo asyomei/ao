@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import { me } from '#/urls'
-import shortText from '#/utils/short-text'
 import { HOUR } from '../consts'
 import { swr, ttlValidator } from '../swr'
 import { queryParams } from '../utils/query-params'
