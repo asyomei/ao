@@ -11,9 +11,9 @@ i {
 a {
   color: var(--text-accent);
   text-decoration: none;
+  text-underline-offset: 2px;
 }
 
 a:hover {
   text-decoration: underline;
-  text-underline-offset: 2px;
 }

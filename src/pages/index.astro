@@ -18,7 +18,7 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
     <h1>{hi}!</h1>
 
     <p>
-      i am <b>vadim <A href={me.mynickname} style={{ color: 'var(--text-primary)' }}>asyomei</A></b>
+      i am <b>vadim <A href={me.mynickname} class="nickname">asyomei</A></b>
       <br />
       yet another dev, so <A href={me.github}>my github</A>
     </p>
@@ -53,7 +53,7 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
 
       fav music
       <p>
-        hard metal and rock, cute jpop;
+        hard metal and rock, happy jpop;
         <br />
         well, very diverse, check
         <A href={me.lastfm}>last.fm</A>
@@ -86,3 +86,10 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
     </Table>
   </Section>
 </DefaultLayout>
+
+<style is:global>
+  .nickname {
+    color: var(--text-primary);
+    text-decoration: underline;
+  }
+</style>
