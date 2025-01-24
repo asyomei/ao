@@ -1,5 +1,6 @@
 export const me = {
   vk: 'https://vk.com/asyomei',
+  shiki: 'https://shikimori.one/asyomei',
   github: 'https://github.com/asyomei',
   lastfm: 'https://last.fm/user/asyomei',
   bluesky: 'https://bsky.app/profile/asyomei.org',
