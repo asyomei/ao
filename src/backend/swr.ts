@@ -1,5 +1,3 @@
-import { setTimeout as delay } from 'node:timers/promises'
-
 type ValidateType = 'refetch' | 'update' | 'keep'
 
 interface Props<T> {
@@ -11,22 +9,20 @@ export function swr<T>({ fetcher, validate }: Props<T>) {
   const data = {} as { value?: T; setAt: number }
   let updating = false
 
-  const refetch = async () => {
-    if (updating) return
+  const refetch = async (attempts = 0) => {
+    if (updating && attempts === 0) return
     updating = true
 
     try {
-      // 3 times
       data.value = await fetcher()
-        .catch(() => delay(200).then(fetcher))
-        .catch(() => delay(300).then(fetcher))
     } catch (e) {
-      console.error(e)
       data.value = undefined
-    } finally {
-      data.setAt = Date.now()
-      updating = false
+      if (attempts < 1) return void refetch(attempts + 1)
+      console.error(e)
     }
+
+    data.setAt = Date.now()
+    updating = false
   }
 
   return async () => {
