@@ -1,5 +1,4 @@
-import './LastSeen.css'
-import { Dynamic } from 'solid-js/web'
+import './LastSeen.scss'
 import { DAY, HOUR, MINUTE, WEEK } from '#/backend/consts'
 import type { LastSeenItem } from '#/backend/last-seen/types'
 import A from './A'
