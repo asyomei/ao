@@ -1,4 +1,5 @@
 import './LastSeen.css'
+import { Dynamic } from 'solid-js/web'
 import { DAY, HOUR, MINUTE, WEEK } from '#/backend/consts'
 import type { LastSeenItem } from '#/backend/last-seen/types'
 import A from './A'
@@ -23,7 +24,16 @@ export default function LastSeen({ items }: Props) {
     </p>
   ))
 
-  return <div class="last-seen">{children}</div>
+  if (children.length <= 1) return <div class="last-seen">{children}</div>
+
+  children[0] = (
+    <summary>
+      <div class="first">{children[0]}</div>
+      <span class="marker" />
+    </summary>
+  )
+
+  return <details class="last-seen">{children}</details>
 }
 
 const formatDate = (date: Date) => {
