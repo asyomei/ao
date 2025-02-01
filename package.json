@@ -16,7 +16,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/solid-js": "^5.0.4",
     "@playform/compress": "^0.1.7",
-    "astro": "^5.2.2",
+    "astro": "^5.2.3",
     "astro-seo": "^0.8.4",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
