@@ -2,6 +2,7 @@ import './LastSeen.scss'
 import { DAY, HOUR, MINUTE, WEEK } from '#/backend/consts'
 import type { LastSeenItem } from '#/backend/last-seen/types'
 import A from './A'
+import Spoiler from './Spoiler'
 
 interface Props {
   items: LastSeenItem[]
@@ -23,16 +24,7 @@ export default function LastSeen({ items }: Props) {
     </p>
   ))
 
-  if (children.length <= 1) return <div class="last-seen">{children}</div>
-
-  children[0] = (
-    <summary>
-      <div class="first">{children[0]}</div>
-      <span class="marker" />
-    </summary>
-  )
-
-  return <details class="last-seen">{children}</details>
+  return <Spoiler class="last-seen">{children}</Spoiler>
 }
 
 const formatDate = (date: Date) => {

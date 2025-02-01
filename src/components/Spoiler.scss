@@ -1,0 +1,49 @@
+.spoiler {
+  white-space: nowrap;
+  overflow: hidden;
+
+  > * + * {
+    padding-top: 2px;
+  }
+
+  .marker {
+    color: var(--text-secondary);
+    font-size: 12px;
+  }
+
+  > summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    outline: none;
+
+    &:active {
+      user-select: none;
+    }
+
+    &:hover {
+      background-color: var(--bg-overlay);
+      cursor: pointer;
+    }
+
+    > .first {
+      overflow: hidden;
+    }
+  }
+
+  @mixin marker($show, $hide) {
+    & > summary > .marker::after {
+      content: $show;
+    }
+
+    &[open] > summary > .marker::after {
+      content: $hide;
+    }
+  }
+
+  @include marker('(show)', '(hide)');
+
+  @media (max-width: 510px) {
+    @include marker('v', '<');
+  }
+}
