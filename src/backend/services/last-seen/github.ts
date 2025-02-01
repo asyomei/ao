@@ -37,7 +37,7 @@ async function github(): Promise<LastSeenItem | undefined> {
     Issues: () => `issue ${payload.action}`,
     Public: () => 'made public',
     PullRequest: () => `pr ${payload.action}`,
-    Push: () => `pushed ${payload.distinct_size} commits`,
+    Push: () => `pushed ${payload.distinct_size} commit${payload.distinct_size === 1 ? '' : 's'}`,
     Release: () => `release ${payload.action}`,
     Watch: () => 'starred',
   }[type.replace('Event', '')]
