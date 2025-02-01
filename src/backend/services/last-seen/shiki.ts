@@ -1,8 +1,8 @@
 import { z } from 'zod'
+import { HOUR } from '#/backend/consts'
+import { swr, ttlValidator } from '#/backend/swr'
+import { queryParams } from '#/backend/utils/query-params'
 import { me } from '#/urls'
-import { HOUR } from '../consts'
-import { swr, ttlValidator } from '../swr'
-import { queryParams } from '../utils/query-params'
 import type { LastSeenItem } from './types'
 
 type ShikiInfo = z.output<typeof ShikiInfo>

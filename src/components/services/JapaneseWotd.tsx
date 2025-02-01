@@ -1,7 +1,7 @@
 import './JapaneseWotd.scss'
-import type { JapaneseWordOfTheDay } from '#/backend/jpwotd'
-import A from './A'
-import Spoiler from './Spoiler'
+import type { JapaneseWordOfTheDay } from '#/backend/services/jpwotd'
+import A from '../ui/A'
+import Spoiler from '../ui/Spoiler'
 
 export default function JapaneseWotd({
   data: { word, speechPart, sentence, url },

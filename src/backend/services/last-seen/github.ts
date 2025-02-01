@@ -1,7 +1,7 @@
 import { z } from 'zod'
+import { HOUR } from '#/backend/consts'
+import { swr, ttlValidator } from '#/backend/swr'
 import { me } from '#/urls'
-import { HOUR } from '../consts'
-import { swr, ttlValidator } from '../swr'
 import type { LastSeenItem } from './types'
 
 const ResponseSchema = z.array(

@@ -1,8 +1,8 @@
 import './LastSeen.scss'
 import { DAY, HOUR, MINUTE, WEEK } from '#/backend/consts'
-import type { LastSeenItem } from '#/backend/last-seen/types'
-import A from './A'
-import Spoiler from './Spoiler'
+import type { LastSeenItem } from '#/backend/services/last-seen/types'
+import A from '../ui/A'
+import Spoiler from '../ui/Spoiler'
 
 interface Props {
   items: LastSeenItem[]

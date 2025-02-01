@@ -1,7 +1,7 @@
 import { toRomaji } from 'wanakana'
 import { z } from 'zod'
-import { swr } from './swr'
-import { xmlParser } from './utils/xml'
+import { swr } from '../swr'
+import { xmlParser } from '../utils/xml'
 
 interface DescriptionStructure {
   speechPart: string
@@ -75,7 +75,7 @@ async function fetchWordOfTheDay(): Promise<JapaneseWordOfTheDay> {
   }
 }
 
-export const jpwotd = swr({
+export const fetchJpwotd = swr({
   fetcher: fetchWordOfTheDay,
   validate: ({ current }) => {
     if (!current) return 'refetch'

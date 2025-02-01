@@ -1,17 +1,15 @@
 ---
-import { jpwotd } from '#/backend/jpwotd'
-import { fetchLastSeenItems } from '#/backend/last-seen'
-import A from '#/components/A'
-import JapaneseWotd from '#/components/JapaneseWotd'
-import LastSeen from '#/components/LastSeen'
-import Section from '#/components/Section.astro'
-import Table from '#/components/Table.astro'
+import { fetchMainData } from '#/backend-data/main'
+import JapaneseWotd from '#/components/services/JapaneseWotd'
+import LastSeen from '#/components/services/LastSeen'
+import A from '#/components/ui/A'
+import Section from '#/components/ui/Section.astro'
+import Table from '#/components/ui/Table.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
 import { ayaya10h, gochuumonShiki, me } from '#/urls'
 import randomInt from '#/utils/random-int'
 
-const lastSeenItems = await fetchLastSeenItems()
-const jpwotdData = await jpwotd()
+const data = await fetchMainData()
 
 const hi = 'h' + 'i'.repeat(randomInt(1, 5))
 ---
@@ -41,10 +39,10 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
       <p>feb 9 (aquarius)</p>
 
       {
-        lastSeenItems.length > 0 && (
+        data.lastSeenItems.length > 0 && (
           <>
             last seen
-            <LastSeen items={lastSeenItems} />
+            <LastSeen items={data.lastSeenItems} />
           </>
         )
       }
@@ -90,9 +88,9 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
   </Section>
 
   {
-    jpwotdData && (
+    data.jpwotd && (
       <Section title="japanese word of the day">
-        <JapaneseWotd data={jpwotdData} />
+        <JapaneseWotd data={data.jpwotd} />
       </Section>
     )
   }
