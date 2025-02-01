@@ -7,7 +7,7 @@ import LastSeen from '#/components/LastSeen'
 import Section from '#/components/Section.astro'
 import Table from '#/components/Table.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
-import { gochuumonShiki, me } from '#/urls'
+import { ayaya10h, gochuumonShiki, me } from '#/urls'
 import randomInt from '#/utils/random-int'
 
 const lastSeenItems = await fetchLastSeenItems()
@@ -96,6 +96,12 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
       </Section>
     )
   }
+
+  <Section title="useless links">
+    <p>
+      <A href={ayaya10h}>ayaya intensifies 10h</A> - why not
+    </p>
+  </Section>
 </DefaultLayout>
 
 <style is:global>

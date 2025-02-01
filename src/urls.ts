@@ -19,3 +19,5 @@ export const proj = {
 export const himawariBot = 'https://t.me/himawaridesu_bot'
 export const teidesu = 'https://tei.su'
 export const gruvbox = 'https://github.com/morhetz/gruvbox?tab=readme-ov-file#palette'
+
+export const ayaya10h = 'https://www.youtube.com/watch?v=D0q0QeQbw9U'
