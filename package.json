@@ -12,27 +12,27 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/node": "^9.0.2",
+    "@astrojs/node": "^9.1.2",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/solid-js": "^5.0.4",
+    "@astrojs/solid-js": "^5.0.5",
     "@playform/compress": "^0.1.7",
-    "astro": "^5.2.5",
+    "astro": "^5.4.1",
     "astro-seo": "^0.8.4",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
-    "fast-xml-parser": "^4.5.1",
-    "sass": "^1.84.0",
-    "solid-js": "^1.9.4",
+    "fast-xml-parser": "^5.0.8",
+    "sass": "^1.85.1",
+    "solid-js": "^1.9.5",
     "wanakana": "^5.3.1",
-    "zod": "^3.24.1"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.4.1",
-    "prettier": "^3.4.2",
+    "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
-  "packageManager": "pnpm@10.2.1+sha512.398035c7bd696d0ba0b10a688ed558285329d27ea994804a52bad9167d8e3a72bcb993f9699585d3ca25779ac64949ef422757a6c31102c12ab932e5cbe5cc92",
+  "packageManager": "pnpm@10.5.2+sha512.da9dc28cd3ff40d0592188235ab25d3202add8a207afbedc682220e4a0029ffbff4562102b9e6e46b4e3f9e8bd53e6d05de48544b0c57d4b0179e22c76d1199b",
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
