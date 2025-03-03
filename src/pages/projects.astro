@@ -4,6 +4,8 @@ import Section from '#/components/ui/Section.astro'
 import Table from '#/components/ui/Table.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
 import { himawariBot, proj } from '#/urls'
+
+export const prerender = true
 ---
 
 <DefaultLayout>
@@ -15,10 +17,10 @@ import { himawariBot, proj } from '#/urls'
 
   <Section title="projects">
     <Table type="medium">
-      <A href={proj.website}>asyomei.org</A>
+      <p><A href={proj.website}>asyomei.org</A></p>
       <p>well, my website. i made it with astro</p>
 
-      <A href={proj.himawari}>himawari bot</A>
+      <p><A href={proj.himawari}>himawari bot</A></p>
       <p>
         <A href={himawariBot}>telegram bot</A>, searches anime and manga info using shikimori api
         (russian)
