@@ -21,3 +21,4 @@ export const teidesu = 'https://tei.su'
 export const gruvbox = 'https://github.com/morhetz/gruvbox?tab=readme-ov-file#palette'
 
 export const ayaya10h = 'https://www.youtube.com/watch?v=D0q0QeQbw9U'
+export const pannya = 'https://www.youtube.com/watch?v=peWJp4WIso4'

@@ -6,7 +6,7 @@ import A from '#/components/ui/A'
 import Section from '#/components/ui/Section.astro'
 import Table from '#/components/ui/Table.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
-import { ayaya10h, gochuumonShiki, me } from '#/urls'
+import { ayaya10h, gochuumonShiki, me, pannya } from '#/urls'
 
 const data = await fetchMainData()
 ---
@@ -93,6 +93,9 @@ const data = await fetchMainData()
   }
 
   <Section title="useless links">
+    <p>
+      <A href={pannya}>pannya-chan</A> - very cute
+    </p>
     <p>
       <A href={ayaya10h}>ayaya intensifies 10h</A> - why not
     </p>
