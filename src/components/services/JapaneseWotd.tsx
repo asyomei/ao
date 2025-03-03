@@ -9,12 +9,6 @@ export default function JapaneseWotd({
   data: JapaneseWordOfTheDay
 }) {
   const trans = word.japanese !== word.kana ? `${word.kana}/${word.romaji}` : word.romaji
-  const htmlSentence = {
-    japanese: mark(sentence.japanese, word.japanese),
-    kana: mark(sentence.kana, word.kana),
-    romaji: mark(sentence.romaji, word.romaji),
-    english: mark(sentence.english, word.english),
-  }
 
   return (
     <div class="jpwotd">
@@ -23,13 +17,11 @@ export default function JapaneseWotd({
       </p>
       <p>part of speech: {speechPart}</p>
       <Spoiler class="sentence">
-        <p innerHTML={htmlSentence.japanese} />
-        {sentence.japanese !== sentence.kana && <p innerHTML={htmlSentence.kana} />}
-        <p innerHTML={htmlSentence.romaji} />
-        <p innerHTML={htmlSentence.english} />
+        <p>{sentence.japanese}</p>
+        {sentence.japanese !== sentence.kana && <p>{sentence.kana}</p>}
+        <p>{sentence.romaji}</p>
+        <p>{sentence.english}</p>
       </Spoiler>
     </div>
   )
 }
-
-const mark = (sentence: string, word: string) => sentence.replaceAll(word, `<b>${word}</b>`)
