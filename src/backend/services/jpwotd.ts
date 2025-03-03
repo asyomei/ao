@@ -96,7 +96,7 @@ const parseDescription = (descXml: string): DescriptionStructure => {
       japanese: elems[1].td,
       english: elems[2].td,
       kana: elems[4].td,
-      romaji: toRomaji(elems[4].td).replace(/(\W)(\w)/g, '$1 $2'),
+      romaji: toRomaji(elems[4].td).replace(/(\W+)(\w)/g, '$1 $2'),
     },
   }
 }
