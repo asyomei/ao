@@ -7,33 +7,28 @@ import Section from '#/components/ui/Section.astro'
 import Table from '#/components/ui/Table.astro'
 import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
 import { ayaya10h, gochuumonShiki, me } from '#/urls'
-import randomInt from '#/utils/random-int'
 
 const data = await fetchMainData()
-
-const hi = 'h' + 'i'.repeat(randomInt(1, 5))
 ---
 
 <DefaultLayout>
   <Section>
-    <h1>{hi}!</h1>
+    <h1>konnichiwa!</h1>
 
     <p>
       i am <b>vadim</b> aka <A href={me.mynickname}>asyomei</A>
       <br />
       yet another dev, so <A href={me.github}>my github</A>
     </p>
-
-    <p>currently i am learning web developing and japanese</p>
   </Section>
 
   <Section title="personal info">
     <Table>
       languages
-      <p>[ru] native [en] maybe [ja] learn</p>
+      <p>[ru] native [en] maybe</p>
 
       languages
-      <p>[js/ts] love</p>
+      <p>[js/ts] main used</p>
 
       birth day
       <p>feb 9 (aquarius)</p>
@@ -50,6 +45,8 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
       fav anime
       <p>
         gochuumon wa usagi desu ka (<A href={gochuumonShiki}>shiki</A>)
+        <br />
+        (mainly bc of music, but whatever)
       </p>
 
       fav music
@@ -77,7 +74,7 @@ const hi = 'h' + 'i'.repeat(randomInt(1, 5))
       <p><A href={me.fourpda}>@asyomei</A></p>
 
       email
-      <p>vadim at asyomei.org</p>
+      <p>vadim /at\ asyomei.org</p>
 
       phone
       <p>don't like</p>
