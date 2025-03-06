@@ -16,6 +16,7 @@
     "@astrojs/sitemap": "^3.2.1",
     "@playform/compress": "^0.1.7",
     "astro": "^5.4.2",
+    "astro-seo": "^0.8.4",
     "dotenv": "^16.4.7",
     "fast-xml-parser": "^5.0.8",
     "sass-embedded": "^1.85.1",

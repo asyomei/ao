@@ -1,5 +1,6 @@
 ---
 import './styles/global.scss'
+import { SEO } from 'astro-seo'
 import type { HTMLAttributes } from 'astro/types'
 import Footer from './Footer.astro'
 import Pages from './Pages.astro'
@@ -10,14 +11,18 @@ interface Props extends HTMLAttributes<'main'> {
 }
 
 const { title, ...props } = Astro.props
-const pageTitle = [title, 'asyomei'].filter(x => x != null).join(' | ')
 ---
 
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
+    <SEO
+      {title}
+      titleDefault="asyomei"
+      titleTemplate="%s | asyomei"
+      description="My personal website"
+    />
   </head>
   <body>
     <Pages />
