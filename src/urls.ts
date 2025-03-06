@@ -8,6 +8,7 @@ export const url = {
       telegram: 'https://t.me/asyomei',
       github: 'https://github.com/asyomei',
       lastfm: 'https://last.fm/user/asyomei',
+      gravatar: 'https://gravatar.com/asyomei',
       shikimori: 'https://shikimori.one/asyomei',
       bluesky: 'https://bsky.app/profile/asyomei.org',
       fourpda: 'https://4pda.to/forum/index.php?showuser=8079654',
