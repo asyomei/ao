@@ -1,0 +1,66 @@
+---
+import type { LastSeenItem } from '#/backend'
+import { formatDate, humanizeDate } from '#/utils/format-date'
+import A from '../ui/A.astro'
+import Grid from '../ui/Grid.astro'
+
+interface Props {
+  items: LastSeenItem[]
+}
+
+const { items } = Astro.props
+---
+
+<Grid columns="auto" class="last-seen">
+  {
+    items.map(item => {
+      return (
+        <div class="item">
+          <p class="content">
+            <A href={item.content.url} title={item.content.text}>
+              {item.content.text}
+            </A>
+            {item.suffix}
+          </p>
+          <p class="service">
+            @ <A href={item.service.url}>{item.service.text}</A>,
+            <span title={formatDate(item.date)}>
+              {humanizeDate(item.date) ?? formatDate(item.date)}
+            </span>
+          </p>
+        </div>
+      )
+    })
+  }
+</Grid>
+
+<style lang="scss" is:global>
+  @use 'src/colors';
+
+  .last-seen {
+    white-space: nowrap;
+    overflow: hidden;
+
+    > * + * {
+      padding-top: 16px;
+    }
+
+    > .item {
+      overflow: hidden;
+
+      > .content {
+        display: flex;
+        overflow: hidden;
+
+        > a {
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      > .service {
+        color: colors.$text-secondary;
+      }
+    }
+  }
+</style>

@@ -61,7 +61,7 @@ async function fetchWordOfTheDay(): Promise<JapaneseWordOfTheDay> {
   })
   const data = ResponseSchema.parse(xmlParser.parse(await resp.text()))
   const item = data.rss.channel.item
-  const [japanese, english] = item.title.split(': ')
+  const [japanese, english] = item.title.split(': ') as [string, string]
   return {
     word: {
       japanese,

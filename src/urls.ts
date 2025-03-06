@@ -1,24 +1,40 @@
-export const me = {
-  vk: 'https://vk.com/asyomei',
-  shiki: 'https://shikimori.one/asyomei',
-  github: 'https://github.com/asyomei',
-  lastfm: 'https://last.fm/user/asyomei',
-  bluesky: 'https://bsky.app/profile/asyomei.org',
-  fourpda: 'https://4pda.to/forum/index.php?showuser=8079654',
-  telegram: 'https://t.me/asyomei',
-  mynickname: 'https://mynickname.com/asyomei',
-}
+export const url = {
+  my: {
+    nickname: 'https://mynickname.com/asyomei',
 
-export const gochuumonShiki = 'https://shikimori.one/animes/21273-gochuumon-wa-usagi-desu-ka'
+    profiles: {
+      vk: 'https://vk.com/asyomei',
+      vndb: 'https://vndb.org/u266442',
+      telegram: 'https://t.me/asyomei',
+      github: 'https://github.com/asyomei',
+      lastfm: 'https://last.fm/user/asyomei',
+      shikimori: 'https://shikimori.one/asyomei',
+      bluesky: 'https://bsky.app/profile/asyomei.org',
+      fourpda: 'https://4pda.to/forum/index.php?showuser=8079654',
+    },
 
-export const proj = {
-  website: `${me.github}/asyomei.org`,
-  himawari: `${me.github}/himawari-bot`,
-}
+    projects: {
+      website: {
+        source: 'https://github.com/asyomei/ao',
+        meaning: 'https://jisho.org/search/ao',
+      },
+      himawari: {
+        source: 'https://github.com/asyomei/himawari-bot',
+        meaning: 'https://jisho.org/search/himawari',
+        instance: 'https://t.me/himawaridesu_bot',
+      },
+      sewa: {
+        source: 'https://github.com/asyomei/sewa',
+        meaning: 'https://jisho.org/search/sewa',
+      },
+    },
+  },
 
-export const himawariBot = 'https://t.me/himawaridesu_bot'
-export const teidesu = 'https://tei.su'
-export const gruvbox = 'https://github.com/morhetz/gruvbox?tab=readme-ov-file#palette'
-
-export const ayaya10h = 'https://www.youtube.com/watch?v=D0q0QeQbw9U'
-export const pannya = 'https://www.youtube.com/watch?v=peWJp4WIso4'
+  background: 'https://nitter.net/mdxu/status/1892894893598494916',
+  teidesu: 'https://tei.su',
+  gochiusa: {
+    shikimori: 'https://shikimori.one/animes/21273-gochuumon-wa-usagi-desu-ka',
+  },
+  pannyaVideo: 'https://youtu.be/peWJp4WIso4',
+  ayaya10hVideo: 'https://youtu.be/D0q0QeQbw9U',
+} as const

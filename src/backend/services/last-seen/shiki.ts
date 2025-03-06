@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { HOUR } from '#/backend/consts'
 import { swr, ttlValidator } from '#/backend/swr'
 import { queryParams } from '#/backend/utils/query-params'
-import { me } from '#/urls'
+import { url } from '#/urls'
 import type { LastSeenItem } from './types'
 
 type ShikiInfo = z.output<typeof ShikiInfo>
@@ -40,8 +40,8 @@ async function shiki(): Promise<LastSeenItem | undefined> {
 
     return {
       service: {
-        text: 'shiki',
-        url: me.shiki,
+        text: 'shikimori',
+        url: url.my.profiles.shikimori,
       },
       content: {
         text: info.target.name,

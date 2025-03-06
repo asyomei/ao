@@ -1,4 +1,4 @@
-name: deploy to server
+name: Deploy to server
 
 on:
   push:
@@ -7,31 +7,31 @@ on:
 
 jobs:
   deploy:
-    if: github.repository == 'asyomei/asyomei.org'
+    if: github.repository == 'asyomei/ao'
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: setup pnpm
+      - name: Setup pnpm
         uses: pnpm/action-setup@v4
 
-      - name: setup node.js
+      - name: Setup node.js
         uses: actions/setup-node@v4
         with:
           node-version: lts/*
           cache: pnpm
 
-      - name: install dependencies
-        run: pnpm i
+      - name: Install dependencies
+        run: pnpm i -P
 
-      - name: build
+      - name: Build
         run: pnpm build
 
-      - name: install sshpass
+      - name: Install sshpass
         run: sudo apt-get install sshpass
 
-      - name: deploy
+      - name: Deploy
         env:
           SSH_DEST: ${{ secrets.SSH_DEST }}
           SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}

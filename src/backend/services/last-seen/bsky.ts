@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { HOUR } from '#/backend/consts'
 import { swr, ttlValidator } from '#/backend/swr'
 import { queryParams } from '#/backend/utils/query-params'
-import { me } from '#/urls'
+import { url } from '#/urls'
 import type { LastSeenItem } from './types'
 
 const API_URL = 'https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed'
@@ -16,7 +16,7 @@ const BlueskyPost = z.object({
 })
 
 const ResponseSchema = z.object({
-  feed: z.object({ post: BlueskyPost }).array(),
+  feed: z.object({ post: BlueskyPost }).array().nonempty(),
 })
 
 const URI_REGEX = /\/app\.bsky\.feed\.post\/([a-zA-Z0-9]+)$/
@@ -40,7 +40,7 @@ async function fetchBluesky(user: string) {
 
   return {
     postId: id,
-    text: post.record.text || '<no text>',
+    text: post.record.text.split('\n')[0] || '<no text>',
     createdAt: new Date(post.record.createdAt),
   }
 }
@@ -51,12 +51,12 @@ async function bsky(): Promise<LastSeenItem | undefined> {
 
   return {
     service: {
-      text: 'bsky',
-      url: me.bluesky,
+      text: 'bluesky',
+      url: url.my.profiles.bluesky,
     },
     content: {
       text,
-      url: `${me.bluesky}/post/${postId}`,
+      url: `${url.my.profiles.bluesky}/post/${postId}`,
     },
     date: createdAt,
   }

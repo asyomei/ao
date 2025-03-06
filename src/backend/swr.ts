@@ -6,7 +6,7 @@ interface Props<T> {
 }
 
 export function swr<T>({ fetcher, validate }: Props<T>) {
-  const data = {} as { value?: T; setAt: number }
+  const data = {} as { value?: T | undefined; setAt: number }
   let updating = false
 
   const refetch = async (attempts = 0) => {
@@ -37,13 +37,13 @@ export function swr<T>({ fetcher, validate }: Props<T>) {
     switch (type) {
       case 'refetch':
         await refetch()
-        return data.value
+        break
       case 'update':
         void refetch()
-        return data.value
-      case 'keep':
-        return data.value
+        break
     }
+
+    return data.value
   }
 }
 

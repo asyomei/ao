@@ -1,0 +1,21 @@
+---
+const { class: className, ...props } = Astro.props
+---
+
+<nav class:list={['nav', className]} {...props}>
+  <slot />
+</nav>
+
+<style lang="scss" is:global>
+  @use 'src/colors';
+
+  .nav {
+    display: flex;
+    gap: 8px;
+
+    > span {
+      user-select: none;
+      color: colors.$text-secondary;
+    }
+  }
+</style>

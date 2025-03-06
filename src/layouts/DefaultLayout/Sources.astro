@@ -1,0 +1,20 @@
+---
+import A from '#/components/ui/A.astro'
+import LinkNav from '#/components/ui/LinkNav.astro'
+---
+
+<LinkNav class="sources">
+  <A href="//background">background</A>
+  <span>/</span>
+  <A href="//my/projects/website/source">source</A>
+</LinkNav>
+
+<style lang="scss" is:global>
+  @use 'src/offset';
+
+  .sources {
+    position: absolute;
+    top: offset.$y;
+    right: offset.$x;
+  }
+</style>

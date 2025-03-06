@@ -1,0 +1,12 @@
+@use 'src/screens';
+
+:root {
+  --offset-x: 40px;
+
+  @include screens.medium {
+    --offset-x: 20px;
+  }
+}
+
+$x: var(--offset-x);
+$y: 32px;

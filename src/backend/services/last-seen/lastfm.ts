@@ -3,7 +3,7 @@ import { HOUR, MINUTE } from '#/backend/consts'
 import { LASTFM_KEY } from '#/backend/env'
 import { swr, ttlValidator } from '#/backend/swr'
 import { queryParams } from '#/backend/utils/query-params'
-import { me } from '#/urls'
+import { url } from '#/urls'
 import type { LastSeenItem } from './types'
 
 export interface Track {
@@ -29,7 +29,7 @@ const LastfmTrack = z.object({
 
 const ResponseSchema = z.object({
   recenttracks: z.object({
-    track: z.array(LastfmTrack),
+    track: z.array(LastfmTrack).nonempty(),
   }),
 })
 
@@ -66,7 +66,7 @@ async function lastfm(): Promise<LastSeenItem | undefined> {
   return {
     service: {
       text: 'lastfm',
-      url: me.lastfm,
+      url: url.my.profiles.lastfm,
     },
     content: {
       text: `${lastfm.title} - ${lastfm.artist}`,

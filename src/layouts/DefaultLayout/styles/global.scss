@@ -1,0 +1,60 @@
+@use 'src/colors';
+@use 'src/screens';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+
+  font-family: inherit;
+  font-weight: inherit;
+  font-size: 100%;
+
+  text-underline-offset: 2px;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: monospace, ui-monospace;
+  font-size: 14px;
+
+  > main {
+    font-size: 18px;
+
+    @include screens.medium {
+      font-size: 16px;
+    }
+  }
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 30px;
+
+  @include screens.medium {
+    font-size: 28px;
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 24px;
+
+  @include screens.medium {
+    font-size: 20px;
+  }
+}
+
+a {
+  color: colors.$text-accent;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

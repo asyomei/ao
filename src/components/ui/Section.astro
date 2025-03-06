@@ -1,21 +1,40 @@
 ---
 interface Props {
-  title?: string
+  title: string
+  open?: boolean
 }
 
-const { title } = Astro.props
+const { title, open = true } = Astro.props
 ---
 
-<section class="section">
-  {title && <h2>--- {title} ---</h2>}
+<details class="section" {open}>
+  <summary>
+    <h2>{title}</h2>
+  </summary>
 
   <slot />
-</section>
+</details>
 
-<style is:global>
+<style lang="scss" is:global>
+  @use 'src/colors';
+
   .section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    > summary {
+      width: max-content;
+
+      border-bottom: dashed 1px colors.$text-secondary;
+      padding-bottom: 12px;
+
+      cursor: pointer;
+      user-select: none;
+    }
+
+    &[open] > summary {
+      border-bottom: solid 1px colors.$text-primary;
+    }
+
+    > * + * {
+      padding-top: 16px;
+    }
   }
 </style>

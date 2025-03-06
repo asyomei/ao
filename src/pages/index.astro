@@ -1,103 +1,135 @@
 ---
-import { fetchMainData } from '#/backend-data/main'
-import JapaneseWotd from '#/components/services/JapaneseWotd'
-import LastSeen from '#/components/services/LastSeen'
-import A from '#/components/ui/A'
+import { fetchJpwotd, fetchLastSeenItems } from '#/backend'
+import JapaneseWotd from '#/components/services/JapaneseWotd.astro'
+import LastSeen from '#/components/services/LastSeen.astro'
+import A from '#/components/ui/A.astro'
+import Grid from '#/components/ui/Grid.astro'
 import Section from '#/components/ui/Section.astro'
-import Table from '#/components/ui/Table.astro'
-import DefaultLayout from '#/layouts/DefaultLayout/DefaultLayout.astro'
-import { ayaya10h, gochuumonShiki, me, pannya } from '#/urls'
+import DefaultLayout from '#/layouts/DefaultLayout/index.astro'
+import { getYearsOld } from '#/utils/years-old'
 
-const data = await fetchMainData()
+const yearsOld = getYearsOld(new Date(2006, 2 - 1, 9))
+
+const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJpwotd()])
 ---
 
-<DefaultLayout>
-  <Section>
-    <h1>konnichiwa!</h1>
+<DefaultLayout class="main-page">
+  <h1>Konnichiwa, world!</h1>
 
-    <p>
-      i am <b>vadim</b> aka <A href={me.mynickname}>asyomei</A>
-      <br />
-      yet another dev, so <A href={me.github}>my github</A>
-    </p>
-  </Section>
+  <p>I'm <A href="//my/nickname">asyomei</A>, yet another person on Earth</p>
 
-  <Section title="personal info">
-    <Table>
-      languages
-      <p>[ru] native [en] maybe</p>
+  <Section title="Some info about me">
+    <Grid columns="120px auto">
+      <p>Name</p>
+      <p>Vadim</p>
 
-      languages
-      <p>[js/ts] main used</p>
+      <p>E-Mail</p>
+      <p class="email">vadim [at] asyomei.org</p>
 
-      birth day
-      <p>feb 9 (aquarius)</p>
+      <p>Birthday</p>
+      <p>9 February 2006 ({yearsOld} years old)</p>
 
-      {
-        data.lastSeenItems.length > 0 && (
-          <>
-            last seen
-            <LastSeen items={data.lastSeenItems} />
-          </>
-        )
-      }
+      <p>Developer</p>
+      <p>true</p>
 
-      fav anime
+      <p>Languages</p>
       <p>
-        gochuumon wa usagi desu ka (<A href={gochuumonShiki}>shiki</A>)
+        Russian [native]
+        <br />
+        TS/JS [main used]
+      </p>
+
+      <p>Loves</p>
+      <p>Nature, cute, emotional things</p>
+
+      <p>Fav anime</p>
+      <p>
+        Gochuumon wa Usagi desu ka (<A href="//gochiusa/shikimori">shiki</A>)
         <br />
         (mainly bc of music, but whatever)
       </p>
 
-      fav music
+      <p>Fav music</p>
       <p>
-        hard metal and rock, happy jpop;
+        Metal and rock, some jpop;
         <br />
-        well, very diverse, check
-        <A href={me.lastfm}>last.fm</A>
+        also check <A href="//my/profiles/lastfm">my last.fm</A>
       </p>
-    </Table>
+    </Grid>
   </Section>
 
-  <Section title="contacts">
-    <Table>
-      telegram
-      <p><A href={me.telegram}>@asyomei</A></p>
+  <Section title="My profiles">
+    <Grid columns="120px 120px auto">
+      <p><A href="//my/profiles/telegram">Telegram</A></p>
+      <p><A href="//my/profiles/bluesky">Bluesky</A></p>
+      <p><A href="//my/profiles/vk">VK</A></p>
 
-      bluesky
-      <p><A href={me.bluesky}>@asyomei.org</A></p>
+      <p><A href="//my/profiles/github">GitHub</A></p>
+      <p><A href="//my/profiles/lastfm">Last.FM</A></p>
+      <p><A href="//my/profiles/fourpda">4PDA</A></p>
 
-      vk
-      <p><A href={me.vk}>@asyomei</A></p>
+      <p><A href="//gochiusa/shikimori">Shikimori</A></p>
+      <p><!-- placeholder --></p>
+      <p><A href="//my/profiles/vndb">VNDB</A></p>
+    </Grid>
+  </Section>
 
-      4pda
-      <p><A href={me.fourpda}>@asyomei</A></p>
+  <Section title="My projects">
+    <Grid columns="120px 180px auto" medium-columns="100px 130px auto">
+      <p><A href="//my/projects/website/source">ao</A></p>
+      <p>[<A href="//my/projects/website/meaning">blue</A>]</p>
+      <p>This website</p>
 
-      email
-      <p>vadim /at\ asyomei.org</p>
+      <p><A href="//my/projects/himawari/source">himawari</A></p>
+      <p>[<A href="//my/projects/himawari/meaning">sunflower</A>]</p>
+      <p>Telegram bot (<A href="//my/projects/himawari/instance">active</A>)</p>
 
-      phone
-      <p>don't like</p>
+      <p><A href="//my/projects/sewa/source">sewa</A></p>
+      <p>[<A href="//my/projects/sewa/meaning">assistance</A>]</p>
+      <p>Node.js http.Server with routing</p>
+    </Grid>
+  </Section>
 
-      mail
-      <p>why</p>
-    </Table>
+  <Section title="Shoutbox">
+    <p>todo</p>
   </Section>
 
   {
-    data.jpwotd && (
-      <Section title="japanese word of the day">
-        <JapaneseWotd data={data.jpwotd} />
+    lastSeenItems.length > 0 && (
+      <Section title="Last Seen">
+        <LastSeen items={lastSeenItems} />
       </Section>
     )
   }
 
-  <Section title="useless links">
-    <p>
-      <A href={pannya}>pannya-chan</A> - very cute
-    </p>
-    <p>
-      <A href={ayaya10h}>ayaya intensifies 10h</A> - why not
-    </p>
+  {
+    jpwotd && (
+      <Section title="Japanese word of the day">
+        <JapaneseWotd data={jpwotd} />
+      </Section>
+    )
+  }
+
+  <Section title="Useless links">
+    <p>Videos:</p>
+    <Grid columns="360px auto" medium-columns="300px auto">
+      <p><A href="//pannyaVideo">Pannya-Chan</A></p>
+      <p>very cute</p>
+
+      <p><A href="//ayaya10hVideo">Ayaya intensifies 10 hours</A></p>
+      <p>why not</p>
+    </Grid>
   </Section>
 </DefaultLayout>
+
+<style lang="scss" is:global>
+  @use 'src/colors';
+
+  .main-page > .section {
+    padding-top: 48px;
+  }
+
+  .email {
+    color: colors.$text-accent;
+  }
+</style>

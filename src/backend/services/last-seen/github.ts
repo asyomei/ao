@@ -1,17 +1,18 @@
 import { z } from 'zod'
 import { HOUR } from '#/backend/consts'
 import { swr, ttlValidator } from '#/backend/swr'
-import { me } from '#/urls'
+import { url } from '#/urls'
 import type { LastSeenItem } from './types'
 
-const ResponseSchema = z.array(
-  z.object({
+const ResponseSchema = z
+  .object({
     type: z.string(),
     payload: z.any(),
     repo: z.object({ name: z.string(), url: z.string() }),
     created_at: z.string(),
-  }),
-)
+  })
+  .array()
+  .nonempty()
 
 const API_URL = 'https://api.github.com/users/asyomei/events/public?per_page=1'
 
@@ -47,7 +48,7 @@ async function github(): Promise<LastSeenItem | undefined> {
   return {
     service: {
       text: 'github',
-      url: me.github,
+      url: url.my.profiles.github,
     },
     content: {
       text: repo.name,

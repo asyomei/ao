@@ -1,24 +1,31 @@
 ---
-import A from '#/components/ui/A'
-import { gruvbox, proj, teidesu } from '#/urls'
+import A from '#/components/ui/A.astro'
 ---
 
-<footer class="footer">
-  <p>
-    inspired by <A href={teidesu}>tei.su</A>
-    / using <A href={gruvbox}>gruvbox palette</A>
-  </p>
-  <p>
-    <A href={proj.website}>source code</A>
-    (updated {import.meta.env.BUILD_DATE})
-  </p>
+<footer id="main-footer">
+  inspired by <A href="//teidesu">tei.su</A>
+  <br />
+  updated {import.meta.env.BUILD_DATE}
 </footer>
 
-<style is:global>
-  .footer {
-    padding-bottom: 8px;
+<style lang="scss" is:global>
+  @use 'src/colors';
+  @use 'src/offset';
+  @use 'src/screens';
+
+  #main-footer {
+    position: fixed;
+    bottom: offset.$y;
+    right: offset.$x;
+
+    color: colors.$text-secondary;
     text-align: center;
-    font-size: 11px;
-    color: var(--text-secondary);
+    font-size: 12px;
+
+    @include screens.medium {
+      position: sticky;
+      top: 100vh;
+      padding-bottom: offset.$y;
+    }
   }
 </style>

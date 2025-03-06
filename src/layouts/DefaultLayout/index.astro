@@ -1,0 +1,62 @@
+---
+import './styles/global.scss'
+import type { HTMLAttributes } from 'astro/types'
+import Footer from './Footer.astro'
+import Pages from './Pages.astro'
+import Sources from './Sources.astro'
+
+interface Props extends HTMLAttributes<'main'> {
+  title?: string
+}
+
+const { title, ...props } = Astro.props
+const pageTitle = [title, 'asyomei'].filter(x => x != null).join(' | ')
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <Pages />
+    <Sources />
+
+    <main {...props}>
+      <slot />
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style lang="scss" is:global>
+  @use 'src/colors';
+  @use 'src/offset';
+  @use 'src/screens';
+
+  body {
+    $dim: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85));
+
+    background-image: $dim, url('./assets/himawari.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    color: colors.$text-primary;
+
+    overflow-y: scroll;
+
+    > main {
+      padding-left: offset.$x;
+      padding-right: offset.$x;
+      padding-top: calc(offset.$y + 72px);
+      padding-bottom: offset.$y;
+
+      > * + * {
+        padding-top: 16px;
+      }
+    }
+  }
+</style>
