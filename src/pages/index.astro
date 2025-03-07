@@ -90,10 +90,6 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
     </Grid>
   </Section>
 
-  <Section title="Shoutbox">
-    <p>todo</p>
-  </Section>
-
   {
     lastSeenItems.length > 0 && (
       <Section title="Last Seen">
