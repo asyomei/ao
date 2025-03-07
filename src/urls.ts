@@ -20,7 +20,7 @@ export const url = {
         meaning: 'https://jisho.org/search/ao',
       },
       himawari: {
-        source: 'https://github.com/asyomei/himawari-bot',
+        source: 'https://github.com/asyomei/himawari',
         meaning: 'https://jisho.org/search/himawari',
         instance: 'https://t.me/himawaridesu_bot',
       },
