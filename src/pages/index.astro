@@ -27,7 +27,7 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
       <p class="email">vadim [at] asyomei.org</p>
 
       <p>Birthday</p>
-      <p>9 February 2006 ({yearsOld} years old)</p>
+      <p>9 February 2006 ({yearsOld})</p>
 
       <p>Developer</p>
       <p>true</p>
@@ -42,18 +42,9 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
       <p>Loves</p>
       <p>Nature, cute, emotional things</p>
 
-      <p>Fav anime</p>
-      <p>
-        Gochuumon wa Usagi desu ka (<A href="//gochiusa/shikimori">shiki</A>)
-        <br />
-        (mainly bc of music, but whatever)
-      </p>
-
       <p>Fav music</p>
       <p>
-        Metal and rock, some jpop;
-        <br />
-        also check <A href="//my/profiles/lastfm">my last.fm</A>
+        Metal and rock, check <A href="//my/profiles/lastfm">my last.fm</A>
       </p>
     </Grid>
   </Section>
@@ -75,19 +66,22 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
   </Section>
 
   <Section title="My projects">
-    <Grid columns="120px 180px auto" medium-columns="100px 130px auto">
-      <p><A href="//my/projects/website/source">ao</A></p>
-      <p>[<A href="//my/projects/website/meaning">blue</A>]</p>
-      <p>This website</p>
-
-      <p><A href="//my/projects/himawari/source">himawari</A></p>
-      <p>[<A href="//my/projects/himawari/meaning">sunflower</A>]</p>
-      <p>Telegram bot (<A href="//my/projects/himawari/instance">active</A>)</p>
-
-      <p><A href="//my/projects/sewa/source">sewa</A></p>
-      <p>[<A href="//my/projects/sewa/meaning">assistance</A>]</p>
-      <p>Node.js http.Server with routing</p>
-    </Grid>
+    <div>
+      <p>
+        <A href="//my/projects/website/source">ao</A>
+        [<A href="//my/projects/website/meaning">blue</A>] - This website
+      </p>
+      <p>
+        <A href="//my/projects/himawari/source">himawari</A>
+        [<A href="//my/projects/himawari/meaning">sunflower</A>] - Telegram bot
+        {/* space */}
+        (<A href="//my/projects/himawari/instance">active</A>)
+      </p>
+      <p>
+        <A href="//my/projects/sewa/source">sewa</A>
+        [<A href="//my/projects/sewa/meaning">assistance</A>] - Node.js http.Server with routing
+      </p>
+    </div>
   </Section>
 
   {
@@ -107,14 +101,15 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
   }
 
   <Section title="Useless links">
-    <p>Videos:</p>
-    <Grid columns="360px auto" medium-columns="300px auto">
-      <p><A href="//pannyaVideo">Pannya-Chan</A></p>
-      <p>very cute</p>
-
-      <p><A href="//ayaya10hVideo">Ayaya intensifies 10 hours</A></p>
-      <p>why not</p>
-    </Grid>
+    <h3>Videos:</h3>
+    <div>
+      <p>
+        <A href="//pannyaVideo">Pannya-Chan</A> - very cute
+      </p>
+      <p>
+        <A href="//ayaya10hVideo">Ayaya intensifies 10 hours</A> - why not
+      </p>
+    </div>
   </Section>
 </DefaultLayout>
 
