@@ -65,25 +65,6 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
     </Grid>
   </Section>
 
-  <Section title="My projects">
-    <div>
-      <p>
-        <A href="//my/projects/website/source">ao</A>
-        [<A href="//my/projects/website/meaning">blue</A>] - This website
-      </p>
-      <p>
-        <A href="//my/projects/himawari/source">himawari</A>
-        [<A href="//my/projects/himawari/meaning">sunflower</A>] - Telegram bot
-        {/* space */}
-        (<A href="//my/projects/himawari/instance">active</A>)
-      </p>
-      <p>
-        <A href="//my/projects/sewa/source">sewa</A>
-        [<A href="//my/projects/sewa/meaning">assistance</A>] - Node.js http.Server with routing
-      </p>
-    </div>
-  </Section>
-
   {
     lastSeenItems.length > 0 && (
       <Section title="Last Seen">

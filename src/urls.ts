@@ -17,16 +17,6 @@ export const url = {
     projects: {
       website: {
         source: 'https://github.com/asyomei/ao',
-        meaning: 'https://jisho.org/search/ao',
-      },
-      himawari: {
-        source: 'https://github.com/asyomei/himawari',
-        meaning: 'https://jisho.org/search/himawari',
-        instance: 'https://t.me/himawaridesu_bot',
-      },
-      sewa: {
-        source: 'https://github.com/asyomei/sewa',
-        meaning: 'https://jisho.org/search/sewa',
       },
     },
   },
