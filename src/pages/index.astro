@@ -13,7 +13,7 @@ const yearsOld = getYearsOld(new Date(2006, 2 - 1, 9))
 const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJpwotd()])
 ---
 
-<DefaultLayout class="main-page">
+<DefaultLayout>
   <h1>Konnichiwa, world!</h1>
 
   <p>I'm <A href="//my/nickname">asyomei</A>, yet another person on Earth</p>
@@ -96,10 +96,6 @@ const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJp
 
 <style lang="scss" is:global>
   @use 'src/colors';
-
-  .main-page > .section {
-    padding-top: 48px;
-  }
 
   .email {
     color: colors.$text-accent;
