@@ -7,7 +7,8 @@ interface Props {
 }
 
 const { word, sentence, speechPart, url } = Astro.props.data
-const pronun = word.japanese === word.kana ? word.romaji : `${word.kana}/${word.romaji}`
+const pronun =
+  !word.kana || word.kana === word.japanese ? word.romaji : `${word.kana}/${word.romaji}`
 ---
 
 <div class="jpwotd">

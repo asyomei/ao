@@ -41,12 +41,20 @@ const ResponseSchema = z.object({
 const te = <S extends string>(th: S) => z.object({ th: z.literal(th), td: z.string() })
 const DescriptionSchema = z.object({
   table: z.object({
-    tr: z.tuple([
-      te('Part of speech:'),
-      te('Example sentence:'),
-      te('Sentence meaning:'),
-      te('Yomigana word:'),
-      te('Yomigana sentence:'),
+    tr: z.union([
+      z.tuple([
+        te('Part of speech:'),
+        te('Example sentence:'),
+        te('Sentence meaning:'),
+        te('Yomigana word:'),
+        te('Yomigana sentence:'),
+      ]),
+      z.tuple([
+        te('Part of speech:'),
+        te('Example sentence:'),
+        te('Sentence meaning:'),
+        te('Yomigana sentence:'),
+      ]),
     ]),
   }),
 })
@@ -67,7 +75,7 @@ async function fetchWordOfTheDay(): Promise<JapaneseWordOfTheDay> {
       japanese,
       english,
       kana: item['wotd:transliteratedWord'],
-      romaji: toRomaji(item['wotd:transliteratedWord']),
+      romaji: toRomaji(item['wotd:transliteratedWord'] || japanese),
     },
     date: item.pubDate,
     url: item.link,
@@ -95,8 +103,8 @@ const parseDescription = (descXml: string): DescriptionStructure => {
     sentence: {
       japanese: elems[1].td,
       english: elems[2].td,
-      kana: elems[4].td,
-      romaji: toRomaji(elems[4].td).replace(/(\W+)(\w)/g, '$1 $2'),
+      kana: elems.at(-1)!.td,
+      romaji: toRomaji(elems.at(-1)!.td).replace(/(\W+)(\w)/g, '$1 $2'),
     },
   }
 }
