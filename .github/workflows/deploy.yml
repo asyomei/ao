@@ -1,4 +1,4 @@
-name: Deploy to server
+name: Deploy
 
 on:
   push:
@@ -23,20 +23,14 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm i -P
+        run: pnpm install -P
 
       - name: Build
         run: pnpm build
 
-      - name: Install sshpass
-        run: sudo apt-get install sshpass
-
       - name: Deploy
-        env:
-          SSH_DEST: ${{ secrets.SSH_DEST }}
-          SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
-          REMOTE_PATH: ${{ secrets.REMOTE_PATH }}
-          ALWAYS_KEY: ${{ secrets.ALWAYS_KEY }}
-          ALWAYS_ACCOUNT: ${{ secrets.ALWAYS_ACCOUNT }}
-          ALWAYS_SITE_ID: ${{ secrets.ALWAYS_SITE_ID }}
         run: bash deploy.sh
+        env:
+          DEPLOY_PASSWORD: ${{ secrets.DEPLOY_PASSWORD }}
+          NAME: ${{ vars.NAME }}
+          OUTPATH: ${{ vars.OUTPATH }}
