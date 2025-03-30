@@ -1,12 +1,12 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
-import type { Get, Paths } from 'type-fest'
+import type { Paths } from 'type-fest'
 import { url } from '#/urls'
 import { get } from '#/utils/get'
 
 type Replace<K extends string> = K extends `${infer A}.${infer B}` ? `${A}/${Replace<B>}` : K
 type Keys = keyof {
-  [K in Paths<typeof url> as Get<typeof url, K> extends string ? `//${Replace<K>}` : never]: never
+  [K in Paths<typeof url> as `//${Replace<K>}`]: never
 }
 
 interface Props extends HTMLAttributes<'a'> {
