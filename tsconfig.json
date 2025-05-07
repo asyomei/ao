@@ -1,21 +1,14 @@
 {
-  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
-    "exactOptionalPropertyTypes": false,
-    "noImplicitReturns": false,
-    "verbatimModuleSyntax": true,
-    "baseUrl": ".",
+    "target": "esnext",
+    "baseUrl": "./src/",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "paths": {
-      "#/*": [
-        "./src/*"
-      ]
-    }
-  },
-  "include": [
-    ".astro/types.d.ts",
-    "**/*"
-  ],
-  "exclude": [
-    "dist"
-  ]
+      "#/*": ["./*"]
+    },
+    "strict": true,
+    "outDir": "dist",
+    "verbatimModuleSyntax": true
+  }
 }

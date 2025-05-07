@@ -1,0 +1,40 @@
+---
+import A from '#/components/A.astro'
+
+interface Link {
+  url: string
+  name: string
+}
+
+interface MakeProps {
+  active: (link: Link) => string
+  link: (link: Link) => string
+  sep: () => string
+}
+
+const links: Link[] = [{ url: '/', name: 'main' }]
+
+const url = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
+const active = links.find((link) => link.url === url)
+
+function make(elems: MakeProps) {
+  const out: string[] = []
+
+  for (const link of links) {
+    if (out.length > 0) out.push(elems.sep())
+    out.push(link === active ? elems.active(link) : elems.link(link))
+  }
+
+  return out
+}
+---
+
+<header class="flex justify-center gap-2">
+  {
+    make({
+      active: (link) => <b>{link.name}</b>,
+      link: (link) => <A href={link.url}>{link.name}</A>,
+      sep: () => <span class="select-none text-secondary">/</span>,
+    })
+  }
+</header>

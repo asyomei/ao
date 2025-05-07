@@ -1,103 +1,73 @@
 ---
-import { fetchJpwotd, fetchLastSeenItems } from '#/backend'
-import JapaneseWotd from '#/components/services/JapaneseWotd.astro'
-import LastSeen from '#/components/services/LastSeen.astro'
-import A from '#/components/ui/A.astro'
-import Grid from '#/components/ui/Grid.astro'
-import Section from '#/components/ui/Section.astro'
-import DefaultLayout from '#/layouts/DefaultLayout/index.astro'
-import { getYearsOld } from '#/utils/years-old'
-
-const yearsOld = getYearsOld(new Date(2006, 2 - 1, 9))
-
-const [lastSeenItems, jpwotd] = await Promise.all([fetchLastSeenItems(), fetchJpwotd()])
+import A from '#/components/A.astro'
+import DefaultLayout from '#/layouts/DefaultLayout.astro'
 ---
 
 <DefaultLayout>
-  <h1>Konnichiwa, world!</h1>
+  <section>
+    =================
+    <br />
+    Sekai Konnichiwa~
+    <br />
+    =================
+  </section>
 
-  <p>I'm <A href="//my/nickname">asyomei</A>, yet another person on Earth</p>
+  <section>
+    I'm Vadim aka Syomei Aoshima aka <A href="//my/nickname">@asyomei</A>
+    <br />
+    Some anime noobie trying to get into IT
+  </section>
 
-  <Section title="Some info about me">
-    <Grid columns="120px auto">
-      <p>Name</p>
-      <p>Vadim</p>
-
-      <p>E-Mail</p>
-      <p class="email">vadim [at] asyomei.org</p>
-
+  <section>
+    <b>--- a little information about me ---</b>
+    <div class="mt-2 table">
       <p>Birthday</p>
-      <p>9 February 2006 ({yearsOld})</p>
-
-      <p>Developer</p>
-      <p>true</p>
+      <p>February 09</p>
 
       <p>Languages</p>
-      <p>
-        Russian [native]
-        <br />
-        TS/JS [main used]
-      </p>
+      <p>ru, en</p>
 
-      <p>Loves</p>
-      <p>Nature, cute, emotional things</p>
+      <p>Fav flower</p>
+      <p>sunflower</p>
+
+      <p>Fav anime</p>
+      <p>
+        gochiusa (<A href="//gochiusa/shiki">shiki</A>/<A href="//gochiusa/anilist">anilist</A>)
+      </p>
 
       <p>Fav music</p>
-      <p>
-        Metal and rock, check <A href="//my/profiles/lastfm">my last.fm</A>
-      </p>
-    </Grid>
-  </Section>
+      <p>check <A href="//my/profiles/lastfm">lastfm</A></p>
 
-  <Section title="My profiles">
-    <Grid columns="120px 120px auto">
-      <p><A href="//my/profiles/telegram">Telegram</A></p>
-      <p><A href="//my/profiles/bluesky">Bluesky</A></p>
-      <p><A href="//my/profiles/vk">VK</A></p>
-
-      <p><A href="//my/profiles/github">GitHub</A></p>
-      <p><A href="//my/profiles/lastfm">Last.FM</A></p>
-      <p><A href="//my/profiles/fourpda">4PDA</A></p>
-
-      <p><A href="//my/profiles/shikimori">Shikimori</A></p>
-      <p><A href="//my/profiles/gravatar">Gravatar</A></p>
-      <p><A href="//my/profiles/vndb">VNDB</A></p>
-    </Grid>
-  </Section>
-
-  {
-    lastSeenItems.length > 0 && (
-      <Section title="Last Seen">
-        <LastSeen items={lastSeenItems} />
-      </Section>
-    )
-  }
-
-  {
-    jpwotd && (
-      <Section title="Japanese word of the day">
-        <JapaneseWotd data={jpwotd} />
-      </Section>
-    )
-  }
-
-  <Section title="Useless links">
-    <h3>Videos:</h3>
-    <div>
-      <p>
-        <A href="//pannyaVideo">Pannya-Chan</A> - very cute
-      </p>
-      <p>
-        <A href="//ayaya10hVideo">Ayaya intensifies 10 hours</A> - why not
-      </p>
+      <p>E-Mail</p>
+      <p>neko {'<at>'} asyomei.org</p>
     </div>
-  </Section>
+  </section>
+
+  <section>
+    <b>--- my profiles ---</b>
+    <div class="mt-2 table">
+      <p>telegram</p>
+      <p><A href="//my/profiles/telegram">@asyomei</A></p>
+
+      <p>bluesky</p>
+      <p><A href="//my/profiles/bluesky">@asyomei.org</A></p>
+
+      <p>github</p>
+      <p><A href="//my/profiles/github">@asyomei</A></p>
+
+      <p>vk</p>
+      <p><A href="//my/profiles/vk">@asyomei</A></p>
+
+      <p>fourpda</p>
+      <p><A href="//my/profiles/fourpda">@asyomei</A></p>
+    </div>
+  </section>
+
+  <section>
+    <b>--- some useless links ---</b>
+    <div class="mt-2 table">
+      <p><A href="//ayaya10hVideo">ayaya 10h</A></p>
+      <p>why not</p>
+    </div>
+  </section>
 </DefaultLayout>
-
-<style lang="scss" is:global>
-  @use 'src/colors';
-
-  .email {
-    color: colors.$text-accent;
-  }
-</style>

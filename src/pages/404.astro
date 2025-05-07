@@ -1,8 +1,21 @@
 ---
-import DefaultLayout from '#/layouts/DefaultLayout/index.astro'
+import DefaultLayout from '#/layouts/DefaultLayout.astro'
+import { pick } from '#/utils/pick'
+
+const emojis = ['>_<', '>~<', '>.<', '> <']
+const phrases = [
+  'this page in the another castle',
+  "this page doesn't exist, i guess",
+  'this page is missing',
+  "it's gone",
+  'there is no page',
+  'not found, have a nice day',
+]
 ---
 
-<DefaultLayout title="Not Found">
-  <h1>404 Not Found</h1>
-  <p>Page: {Astro.url.pathname}</p>
+<DefaultLayout disableFooterStickingHelper>
+  <div class="mb-24 h-full flex flex-1 flex-col items-center justify-center text-center">
+    <p class="text-center text-30 leading-none mb-16">{pick(emojis)}</p>
+    {pick(phrases)}
+  </div>
 </DefaultLayout>
