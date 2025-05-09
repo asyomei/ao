@@ -1,8 +1,7 @@
 ---
 import type { HTMLAttributes } from 'astro/types'
 import type { Paths } from 'type-fest'
-
-import { url } from '#/url'
+import { url } from '~/url'
 
 type Replace<K extends string> = K extends `${infer A}.${infer B}` ? `${A}/${Replace<B>}` : K
 type Keys = keyof {

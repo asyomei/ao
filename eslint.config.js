@@ -4,5 +4,4 @@ export default antfu({
   astro: true,
   typescript: true,
   unocss: true,
-  formatters: true,
 })

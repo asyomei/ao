@@ -1,5 +1,5 @@
 ---
-import A from '#/components/A.astro'
+import A from '~/components/A.astro'
 
 interface Link {
   url: string
@@ -15,7 +15,7 @@ interface MakeProps {
 const links: Link[] = [{ url: '/', name: 'main' }]
 
 const url = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '')
-const active = links.find((link) => link.url === url)
+const active = links.find(link => link.url === url)
 
 function make(elems: MakeProps) {
   const out: string[] = []
@@ -32,8 +32,8 @@ function make(elems: MakeProps) {
 <header class="flex justify-center gap-2">
   {
     make({
-      active: (link) => <b>{link.name}</b>,
-      link: (link) => <A href={link.url}>{link.name}</A>,
+      active: link => <b>{link.name}</b>,
+      link: link => <A href={link.url}>{link.name}</A>,
       sep: () => <span class="select-none text-secondary">/</span>,
     })
   }

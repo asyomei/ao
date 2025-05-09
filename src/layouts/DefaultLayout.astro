@@ -9,7 +9,7 @@ interface Props {
 
 const {
   title = 'Syomei Aoshima',
-  disableFooterStickingHelper = false
+  disableFooterStickingHelper = false,
 } = Astro.props
 ---
 
@@ -21,14 +21,16 @@ const {
     <link rel="icon" type="image/gif" href="/favicon.gif" />
     <title>{title}</title>
   </head>
-  <body class="font-mono text-sm leading-4 text-primary bg-base flex flex-col items-center underline-offset-2 min-h-screen">
-    <div class="flex flex-col gap-6 min-h-screen w-full md:w-720px p-6">
+  <body class="min-h-screen flex flex-col items-center bg-base text-sm text-primary leading-4 font-mono underline-offset-2">
+    <div class="min-h-screen w-full flex flex-col gap-6 p-6 md:w-720px">
       <Header />
       <slot />
 
-      {!disableFooterStickingHelper && <div class="flex-1">
-        <!-- placeholder for sticking footer to bottom -->
-      </div>}
+      {!disableFooterStickingHelper && (
+        <div class="flex-1">
+          <!-- placeholder for sticking footer to bottom -->
+        </div>
+      )}
       <Footer />
     </div>
   </body>
